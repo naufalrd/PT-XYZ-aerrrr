@@ -114,13 +114,13 @@ class Auth extends CI_Controller
                     } else if ($this->session->userdata('level') == '2') {
                         redirect('/operator');
                     } else if ($this->session->userdata('level') == '3') {
-                        redirect('/bidang');
+                        redirect('/direktur');
                     } else if ($this->session->userdata('level') == '4') {
                         redirect('/bidang');
                     } else if ($this->session->userdata('level') == '5') {
                         redirect('/bidang');
                     } else if ($this->session->userdata('level') == '6') {
-                        redirect('/direktur');
+                        redirect('/bidang');
                     }
                 } else {
                     echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('auth/login') . '";</script>';
@@ -142,13 +142,13 @@ class Auth extends CI_Controller
             } else if ($this->session->userdata('level') == '2') {
                 redirect('/operator');
             } else if ($this->session->userdata('level') == '3') {
-                redirect('/bidang');
+                redirect('/direktur');
             } else if ($this->session->userdata('level') == '4') {
                 redirect('/bidang');
             } else if ($this->session->userdata('level') == '5') {
                 redirect('/bidang');
             } else if ($this->session->userdata('level') == '6') {
-                redirect('/direktur');
+                redirect('/bidang');
             }
         } else {
             redirect('auth/login');
