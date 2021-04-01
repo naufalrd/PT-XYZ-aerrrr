@@ -8,7 +8,7 @@ class Pelanggan extends CI_Controller
     {
         parent::__construct();
         // $this->load->model('auth_model');
-        if($this->session->userdata('level') != '1'){
+        if ($this->session->userdata('level') != '1') {
             redirect('auth/check_level');
         }
     }
@@ -24,6 +24,12 @@ class Pelanggan extends CI_Controller
     {
         $this->load->view('template/header.php');
         $this->load->view('pelanggan/details.php');
+        $this->load->view('template/footer.php');
+    }
+    public function biodata()
+    {
+        $this->load->view('template/header.php');
+        $this->load->view('pelanggan/biodata.php');
         $this->load->view('template/footer.php');
     }
 
