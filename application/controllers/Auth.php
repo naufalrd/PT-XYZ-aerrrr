@@ -16,7 +16,10 @@ class Auth extends CI_Controller
         if ($this->session->userdata('level')) {
 			redirect('auth/check_level');
 		}
-        $this->load->view('template/auth/header.php');
+        $data = [
+            'title' => 'Login'
+        ];
+        $this->load->view('template/auth/header.php', $data);
         $this->load->view('auth/login.php');
         $this->load->view('template/auth/footer.php');
     }
@@ -27,47 +30,46 @@ class Auth extends CI_Controller
         if ($this->session->userdata('level')) {
 			redirect('auth/check_level');
 		}
-        $this->load->view('template/auth/header.php');
+        $data = [
+            'title' => 'Register'
+        ];
+        $this->load->view('template/auth/header.php', $data);
         $this->load->view('auth/register.php');
         $this->load->view('template/auth/footer.php');
     }
 
-    // check register pasien
-    public function check_register_pasien()
+    // check register user
+    public function check_register()
     {
         $this->load->library('form_validation');
         $this->load->library('session');
 
-        $this->form_validation->set_rules('username_pasien', 'Username', 'required|min_length[5]|max_length[15]|is_unique[akun.username]');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[15]|is_unique[user.username]');
 
         if ($this->form_validation->run() == FALSE) {
             $errors = $this->form_validation->error_array();
+            
             $this->session->set_flashdata('errors', $errors);
             $this->session->set_flashdata('input', $this->input->post());
-            // redirect('auth/register');
+            redirect('auth/register');
         } else {
             // data untuk tabel akun
-            $username = $this->input->post('username_pasien');
-            $level = 'pasien';
+            $username = $this->input->post('username');
+            $level = '1';
             $password = $this->input->post('password');
             $pass = password_hash($password, PASSWORD_DEFAULT);
-            // data untuk tabel pasien
-            $nama_pasien = $this->input->post('nama_pasien');
-            $umur_pasien = $this->input->post('umur_pasien');
-            $alamat_pasien = $this->input->post('alamat_pasien');
+            $nama_depan = $this->input->post('nama_depan');
+            $nama_belakang = $this->input->post('nama_belakang');
+            $alamat = $this->input->post('alamat');
             $data = [
                 'username' => $username,
                 'level' => $level,
-                'password' => $pass
+                'password' => $pass,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+                'alamat' => $alamat,
             ];
-            $insert = $this->auth_model->register("akun", $data);
-            $data1 = [
-                'username_pasien' => $username,
-                'nama_pasien' => $nama_pasien,
-                'umur_pasien' => $umur_pasien,
-                'alamat_pasien' => $alamat_pasien,
-            ];
-            $insert = $this->auth_model->register("pasien", $data1);
+            $insert = $this->auth_model->register("user", $data);
             if ($insert) {
                 echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="' . base_url('index.php/auth/login') . '";</script>';
             }
@@ -97,26 +99,29 @@ class Auth extends CI_Controller
             $cek_login = $this->auth_model->cek_login($username);
 
             if ($cek_login == FALSE) {
-                echo '<script>alert("Username yang Anda masukan salah.");window.location.href="' . base_url('/index.php/auth/login') . '";</script>';
+                echo '<script>alert("Username yang Anda masukan salah.");window.location.href="' . base_url('/auth/login') . '";</script>';
             } else {
 
                 if (password_verify($pass, $cek_login->password)) {
                     // if the username and password is a match
                     $this->session->set_userdata('username', $cek_login->username);
                     $this->session->set_userdata('level', $cek_login->level);
-
-                    if ($this->session->userdata('level') == 'admin') {
-                        redirect('/admin');
-                    } else if ($this->session->userdata('level') == 'dokter') {
-                        redirect('/dokter');
-                    } else if ($this->session->userdata('level') == 'perawat') {
-                        redirect('/perawat');
-                    }
-                    if ($this->session->userdata('level') == 'pasien') {
-                        redirect('pasien');
+                    
+                    if ($this->session->userdata('level') == '1') {
+                        redirect('/pelanggan');
+                    } else if ($this->session->userdata('level') == '2') {
+                        redirect('/operator');
+                    } else if ($this->session->userdata('level') == '3') {
+                        redirect('/bidang');
+                    } else if ($this->session->userdata('level') == '4') {
+                        redirect('/bidang');
+                    } else if ($this->session->userdata('level') == '5') {
+                        redirect('/bidang');
+                    } else if ($this->session->userdata('level') == '6') {
+                        redirect('/direktur');
                     }
                 } else {
-                    echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('/index.php/auth/login') . '";</script>';
+                    echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('auth/login') . '";</script>';
                 }
             }
         }
@@ -129,15 +134,18 @@ class Auth extends CI_Controller
     }
 
     public function check_level(){
-        if ($this->session->userdata('level') == 'admin') {
-            redirect('/admin');
-        } else if ($this->session->userdata('level') == 'dokter') {
-            redirect('/dokter');
-        } else if ($this->session->userdata('level') == 'perawat') {
-            redirect('/perawat');
-        }
-        if ($this->session->userdata('level') == 'pasien') {
-            redirect('pasien');
+        if ($this->session->userdata('level') == '1') {
+            redirect('/pelanggan');
+        } else if ($this->session->userdata('level') == '2') {
+            redirect('/operator');
+        } else if ($this->session->userdata('level') == '3') {
+            redirect('/bidang');
+        } else if ($this->session->userdata('level') == '4') {
+            redirect('/bidang');
+        } else if ($this->session->userdata('level') == '5') {
+            redirect('/bidang');
+        } else if ($this->session->userdata('level') == '6') {
+            redirect('/direktur');
         }
     }
 }

@@ -24,7 +24,7 @@
             <div class="position-fixed col-xl-2 col-lg-3 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block bg-indigo h100vh border-end border-0 z-1">
                 <div class="p-1 mt-2 text-center">
                     <div class="d-flex flex-row place-center">
-                        <h3 class="dashboard-title poppins-md text-uppercase">RS Sehat Selalu</h3>
+                        <h3 class="dashboard-title poppins-md text-uppercase">XYZ Care</h3>
                     </div>
                 </div>
                 <ul class="navbar-nav mb-lg-0 my-3">
@@ -50,7 +50,25 @@
 
                     <!-- Pelanggan -->
                     <li class="nav-item p-1">
-                        <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                        <a class="<?= $this->uri->segment(1) == 'pelanggan' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+                    
+                    <!-- Operator -->
+                    <li class="nav-item p-1">
+                        <a class="<?= $this->uri->segment(1) == 'operator' && $this->uri->segment(2) == '' || $this->uri->segment(2) == 'teruskan' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>operator"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+                    <li class="nav-item p-1">
+                        <a class="<?= $this->uri->segment(1) == 'operator' && $this->uri->segment(2) == 'user' || $this->uri->segment(2) == 'add_form' || $this->uri->segment(2) == 'edit_form'? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>operator/user"><span class="bx bx-user">&nbsp;&nbsp;</span> Users</a>
+                    </li>
+
+                    <!-- Bidang -->
+                    <li class="nav-item p-1">
+                        <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+                    
+                    <!-- Direktur -->
+                    <li class="nav-item p-1">
+                        <a class="<?= $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == 'details' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>direktur"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                 </ul>
             </div>

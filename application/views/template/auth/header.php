@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Login</title>
+    <title><?= $title ;?></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -19,6 +19,6 @@
 <body class="text-center">
 
     <main class="form-signin">
-            <img class="mb-4" src="<?= base_url() ?>/assets/kesehatan-icon.png" alt="" width="72" height="72">
+            <img class="mb-4" src="<?= base_url() ?>/assets/logo.png" alt="" width="72" height="72">
             
             

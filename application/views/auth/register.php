@@ -1,4 +1,5 @@
 <div class="signin-input">
+<h1 class="h3 mb-3 fw-normal">Let's sign up</h1>
     <?php
     $errors = $this->session->flashdata('errors');
     if (!empty($errors)) {
@@ -13,27 +14,27 @@
             </div>
         </div>
     <?php } ?>
-    <form action="<?= site_url(); ?>auth/check_register_pasien" method="post">
+    <form action="<?= site_url(); ?>auth/check_register" method="post">
         <div class="row">
-            <div class="form-group col-12 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Nama Pasien</label>
-                <input type="text" name="nama_pasien" class="form-control shadow-none" placeholder="Nama Depan" required autofocus>
+            <div class="form-group col-6 mb-3">
+                <label for="inputEmail" class="form-controll visually-hidden">Nama Depan</label>
+                <input type="text" name="nama_depan" class="form-control shadow-none" placeholder="Nama Depan" required autofocus>
             </div>
             <div class="form-group col-6 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Umur</label>
-                <input type="number" name="umur_pasien" class="form-control shadow-none" placeholder="Umur" required>
+                <label for="inputEmail" class="form-controll visually-hidden">Nama Belakang</label>
+                <input type="text" name="nama_belakang" class="form-control shadow-none" placeholder="Nama Belakang" required>
             </div>
             <div class="form-group col-6 mb-3">
                 <label for="inputEmail" class="form-controll visually-hidden">Username</label>
-                <input type="text" name="username_pasien" class="form-control" autocomplete="off" placeholder="Username" required>
+                <input type="text" name="username" class="form-control" autocomplete="off" placeholder="Username" required>
+            </div>
+            <div class="form-group col-6 mb-3">
+                <label for="inputEmail" class="form-controll visually-hidden">Password</label>
+                <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Password" required>
             </div>
             <div class="form-group col-12 mb-3">
                 <label for="inputEmail" class="form-controll visually-hidden">Alamat</label>
-                <textarea type="text" name="alamat_pasien" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
-            </div>
-            <div class="form-group col-12 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Password</label>
-                <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Password" required>
+                <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
         </div>
