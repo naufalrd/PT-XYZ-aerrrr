@@ -37,6 +37,12 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/biodata.php',$data);
         $this->load->view('template/footer.php');
     }
+    public function add_keluhan()
+    {
+        $this->load->view('template/header.php');
+        $this->load->view('pelanggan/addkeluhan.php');
+        $this->load->view('template/footer.php');
+    }
 
     public function update_biodata(){
         $nama_depan = $this->input->post('nama_depan');
