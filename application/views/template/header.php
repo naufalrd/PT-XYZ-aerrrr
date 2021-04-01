@@ -28,26 +28,6 @@
                     </div>
                 </div>
                 <ul class="navbar-nav mb-lg-0 my-3">
-                    <!-- Admin -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != 'admin' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'admin' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>admin"><span class="fas fa-users">&nbsp;&nbsp;</span> User</a>
-                    </li>
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != 'admin' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(2) == 'jadwal' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>admin/jadwal"><span class="fas fa-calendar">&nbsp;&nbsp;</span> Jadwal</a>
-                    </li>
-                    <!-- Dokter -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != 'dokter' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'dokter' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>dokter"><span class="fas fa-chart-pie">&nbsp;&nbsp;</span> Diagnosa</a>
-                    </li>
-                    <!-- Perawat -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != 'perawat' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'perawat' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>perawat"><span class="fas fa-user">&nbsp;&nbsp;</span> Panggil</a>
-                    </li>
-                    <!-- Pasien -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != 'pasien' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'pasien' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pasien"><span class="fas fa-chart-bar">&nbsp;&nbsp;</span> Rekam Medis</a>
-                    </li>
-
                     <!-- Pelanggan -->
                     <li class="nav-item p-1<?= $this->session->userdata('level') != '1' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'pelanggan' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
@@ -67,7 +47,13 @@
                     </li>
 
                     <!-- Bidang -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != '4' || $this->session->userdata('level') != '5' || $this->session->userdata('level') != '6' ? ' d-none' : ''; ?>">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '4' ? ' d-none' : ''; ?>">
+                        <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '5' ? ' d-none' : ''; ?>">
+                        <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '6' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                     

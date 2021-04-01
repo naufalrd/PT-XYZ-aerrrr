@@ -22,10 +22,10 @@
         </div>
 
         <!-- Komentar User -->
-        <div class="container mt-5 text-center">
-            <div class="row" id="showForm">
+        <div class="container mt-5">
+            <div class="row" id="showForm text-center">
                 <form action="" method="POST">
-                    <textarea id="summernote" name="editordata"></textarea>
+                    <textarea id="summernote" name="editordata" class="text-start"></textarea>
                     <button type="submit" class="btn btn-sm btn-primary mt-3">Submit</button>
                 </form>
             </div>
