@@ -8,6 +8,9 @@ class Operator extends CI_Controller
     {
         parent::__construct();
         // $this->load->model('auth_model');
+        if($this->session->userdata('level') !='2'){
+            redirect('auth/check_level');
+        }
     }
 
     public function index()

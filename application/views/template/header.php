@@ -49,27 +49,28 @@
                     </li>
 
                     <!-- Pelanggan -->
-                    <li class="nav-item p-1">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '1' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'pelanggan' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                     
                     <!-- Operator -->
-                    <li class="nav-item p-1">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '2' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'operator' && $this->uri->segment(2) == '' || $this->uri->segment(2) == 'teruskan' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>operator"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
-                    <li class="nav-item p-1">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '2' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'operator' && $this->uri->segment(2) == 'user' || $this->uri->segment(2) == 'add_form' || $this->uri->segment(2) == 'edit_form'? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>operator/user"><span class="bx bx-user">&nbsp;&nbsp;</span> Users</a>
                     </li>
 
+                    <!-- Direktur -->
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '3' ? ' d-none' : ''; ?>">
+                        <a class="<?= $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == 'details' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>direktur"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                    </li>
+
                     <!-- Bidang -->
-                    <li class="nav-item p-1">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') != '4' || $this->session->userdata('level') != '5' || $this->session->userdata('level') != '6' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                     
-                    <!-- Direktur -->
-                    <li class="nav-item p-1">
-                        <a class="<?= $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'direktur' && $this->uri->segment(2) == 'details' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>direktur"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
-                    </li>
                 </ul>
             </div>
             <!-- End of Sidebar -->
@@ -105,7 +106,7 @@
                                         <li class="nav-item dropdown me-0">
                                             <a class="bg-transparent nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src="<?= base_url() ;?>/assets/kesehatan-icon.png" alt="profile-picture" class="rounded-circle img-profile-thumbnail">
-                                                <span class="fs-7 text-grey d-lg-inline d-md-inline d-sm-none"><?= $this->session->userdata('username'); ?></span>
+                                                <span class="fs-7 text-grey d-lg-inline d-md-inline d-sm-none"><?= $this->session->userdata('nama_depan').' '.$this->session->userdata('nama_belakang') ?></span>
                                             </a>
                                             <div class="dropdown-menu shadow rounded w-100 border-0" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item fs-7 text-grey" href="#"><span class="far fa-user-circle">&nbsp;</span> My Profile</a>

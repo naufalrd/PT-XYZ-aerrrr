@@ -14,7 +14,7 @@
                         <img src="<?= base_url(); ?>/assets/kesehatan-icon.png" class="w-100 rounded-circle">
                     </div>
                     <div class="col-8 poppins-md">
-                        Hi, <?= $this->session->userdata('username'); ?> <br>
+                        Hi, <?= $this->session->userdata('nama_depan').' '.$this->session->userdata('nama_belakang') ?> <br>
                         <a href="<?= site_url('auth/logout'); ?>" class="btn btn-warning btn-ss mt-1"><span class="fas fa-sign-out-alt">
                                 &nbsp;</span>Sign Out</a>
                         <a href="#" class="btn btn-warning btn-ss mt-1"><span class="far fa-user-circle">

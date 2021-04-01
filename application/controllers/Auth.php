@@ -63,7 +63,7 @@ class Auth extends CI_Controller
             $alamat = $this->input->post('alamat');
             $data = [
                 'username' => $username,
-                'level' => $level,
+                'id_level' => $level,
                 'password' => $pass,
                 'nama_depan' => $nama_depan,
                 'nama_belakang' => $nama_belakang,
@@ -105,7 +105,9 @@ class Auth extends CI_Controller
                 if (password_verify($pass, $cek_login->password)) {
                     // if the username and password is a match
                     $this->session->set_userdata('username', $cek_login->username);
-                    $this->session->set_userdata('level', $cek_login->level);
+                    $this->session->set_userdata('nama_depan', $cek_login->nama_depan);
+                    $this->session->set_userdata('nama_belakang', $cek_login->nama_belakang);
+                    $this->session->set_userdata('level', $cek_login->id_level);
                     
                     if ($this->session->userdata('level') == '1') {
                         redirect('/pelanggan');
@@ -134,18 +136,22 @@ class Auth extends CI_Controller
     }
 
     public function check_level(){
-        if ($this->session->userdata('level') == '1') {
-            redirect('/pelanggan');
-        } else if ($this->session->userdata('level') == '2') {
-            redirect('/operator');
-        } else if ($this->session->userdata('level') == '3') {
-            redirect('/bidang');
-        } else if ($this->session->userdata('level') == '4') {
-            redirect('/bidang');
-        } else if ($this->session->userdata('level') == '5') {
-            redirect('/bidang');
-        } else if ($this->session->userdata('level') == '6') {
-            redirect('/direktur');
+        if($this->session->userdata('level')){
+            if ($this->session->userdata('level') == '1') {
+                redirect('/pelanggan');
+            } else if ($this->session->userdata('level') == '2') {
+                redirect('/operator');
+            } else if ($this->session->userdata('level') == '3') {
+                redirect('/bidang');
+            } else if ($this->session->userdata('level') == '4') {
+                redirect('/bidang');
+            } else if ($this->session->userdata('level') == '5') {
+                redirect('/bidang');
+            } else if ($this->session->userdata('level') == '6') {
+                redirect('/direktur');
+            }
+        } else {
+            redirect('auth/login');
         }
     }
 }
