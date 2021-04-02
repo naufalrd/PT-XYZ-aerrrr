@@ -2,7 +2,7 @@
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center">Keluhan</h1>
         <div class="text-center mb-5">
-            <a href="<?= site_url(); ?>pelanggan/addkeluhan" class="btn btn-outline-dark btn-sm"> + Keluhan</a>
+            <a href="<?= site_url(); ?>pelanggan/add_keluhan" class="btn btn-outline-dark btn-sm"> + Keluhan</a>
         </div>
         <div class="container text-center overflow-auto">
 
