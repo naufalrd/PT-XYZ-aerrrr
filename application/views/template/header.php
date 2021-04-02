@@ -33,7 +33,7 @@
                         <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                     <li class="nav-item p-1<?= $this->session->userdata('level') != '1' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == 'biodata' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan/biodata"><span class="bx bx-user">&nbsp;&nbsp;</span> Biodata</a>
+                        <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == 'biodata' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan/biodata/<?= $this->session->userdata('username')?>"><span class="bx bx-user">&nbsp;&nbsp;</span> Biodata</a>
                     </li>
                     
                     <!-- Operator -->
