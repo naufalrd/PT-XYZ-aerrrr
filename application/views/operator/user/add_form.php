@@ -1,5 +1,19 @@
 <div class="container mb-container">
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <?php
+    $errors = $this->session->flashdata('errors');
+    if (!empty($errors)) {
+    ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger text-center">
+                    <?php foreach ($errors as $key => $error) { ?>
+                        <?php echo "$error<br>"; ?>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
         <h1 class="text-center mb-5">Add User</h1>
         <div class="container text-center overflow-auto">
             <form action="<?= site_url(); ?>operator/add_user" method="post">
@@ -25,11 +39,12 @@
                         <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
                     </div>
                     <div class="form-group col-12 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Nama Bidang</label>
-                        <select class="form-select" id="validationCustom04" required>
+                        <label for="inputEmail" class="form-controll visually-hidden">Level</label>
+                        <select class="form-select" id="validationCustom04" name="id_level" required>
                             <option selected disabled value="">Choose...</option>
-                            <option value="">Bidang Pariwisata</option>
-                            <option value="">Bidang Kehutanan</option>
+                            <?php $no = 1;foreach ($level as $row) :?>
+                            <option value="<?= $row['id_level'] ?>"> <?= $row['id_level'] ?>. <?= $row['nama_level'] ?> - <?= $row['nama_bidang'] ?></option>
+                            <?php endforeach ?>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid state.

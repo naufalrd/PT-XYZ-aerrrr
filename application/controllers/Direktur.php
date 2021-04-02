@@ -7,7 +7,7 @@ class Direktur extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth_model');
+        $this->load->model('direktur_model');
         if($this->session->userdata('level') != '3'){
             redirect('auth/check_level');
         }
@@ -15,15 +15,19 @@ class Direktur extends CI_Controller
 
     public function index()
     {
+        $data['keluhan'] = $this->direktur_model->search_keluhan();
+        var_dump($data);
         $this->load->view('template/header.php');
-        $this->load->view('direktur/home.php');
+        $this->load->view('direktur/home.php',$data);
         $this->load->view('template/footer.php');
     }
 
-    public function details()
+    public function details($id)
     {
+        $data['feedback'] = $this->direktur_model->monitor_feedback($id);
+        $data['keluhan'] = $this->direktur_model->monitor_keluhan($id);
         $this->load->view('template/header.php');
-        $this->load->view('direktur/details.php');
+        $this->load->view('direktur/details.php',$data);
         $this->load->view('template/footer.php');
     }
 }
