@@ -108,6 +108,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('nama_depan', $cek_login->nama_depan);
                     $this->session->set_userdata('nama_belakang', $cek_login->nama_belakang);
                     $this->session->set_userdata('level', $cek_login->id_level);
+                    $this->session->set_userdata('id_user', $cek_login->id_user);
                     
                     if ($this->session->userdata('level') == '1') {
                         redirect('/pelanggan');
