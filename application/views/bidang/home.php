@@ -38,7 +38,6 @@
                         <th scope="col">Nama Pelanggan</th>
                         <th scope="col">Keluhan</th>
                         <th scope="col">Tanggal Keluhan</th>
-                        <th scope="col">Tanggal Respon</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -48,7 +47,7 @@
                         <th><?= $ni++?></th>
                         <td><?= $data2['nama_depan']." ".$data2['nama_belakang']?></td>
                         <td><?= $data2['judul']?></td>
-                        <td><?= $data2['tanggal_respon']?></td>
+                        <td><?= $data2['tanggal_keluhan']?></td>
                         <td><a href="<?= site_url(); ?>bidang/details/<?= $data2['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
                     </tr>
                 <?php endforeach ?>
