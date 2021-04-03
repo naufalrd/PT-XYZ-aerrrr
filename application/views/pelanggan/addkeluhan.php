@@ -10,14 +10,18 @@
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center mb-5">Keluhan</h1>
         <div class="container overflow-auto">
-            <form action="<?= site_url(); ?>operator/add_user" method="post">
+            <form action="<?= site_url(); ?>pelanggan/add_keluhan" method="post">
                 <div class="row">
                     <div class="form-group col-12 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Keluhan</label>
-                        <textarea id="summernote" type="text" name="alamat" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
+                        <label for="inputEmail" class="form-controll">Judul Keluhan</label>
+                        <input type="text" name="judul_keluhan" class="form-control" autocomplete="off"></input>
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                        <label for="inputEmail" class="form-controll">Keluhan</label>
+                        <textarea id="summernote" type="text" name="keluhan" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
                     </div>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">Add User</button>
+                <button class="btn btn-lg btn-primary" type="submit">Mengeluh</button>
             </form>
         </div>
     </div>

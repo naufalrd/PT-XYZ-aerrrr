@@ -10,4 +10,40 @@ class Pelanggan_model extends CI_Model{
         $this->db->where($where);
         $this->db->update($table,$data);
     }
+
+    public function tambah_keluhan($table,$data){
+        $this->db->insert($table,$data);
+    }
+
+    public function get_keluhan(){
+        $this->db->from('keluhan');
+        $this->db->where('id_user',$this->session->userdata('id_user'));
+        $this->db->where('keluhan.status', ''); 
+        return $this->db->get()->result_array();
+    }
+
+    public function get_riwayat(){
+        $this->db->from('keluhan');
+        $this->db->where('id_user',$this->session->userdata('id_user'));
+        $this->db->where('keluhan.status !=',''); 
+        return $this->db->get()->result_array();
+    }
+    
+    public function monitor_feedback($id){
+        $this->db->select('*');
+		$this->db->from('feedback');
+        $this->db->join('keluhan', 'feedback.id_keluhan = keluhan.id_keluhan');
+		$this->db->join('user', 'user.id_user = keluhan.id_user');
+        $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
+        $this->db->where('keluhan.id_keluhan', $id);
+        $this->db->order_by('feedback.id_feedback', 'asc');
+        return $this->db->get()->result_array();
+    }
+
+    public function monitor_keluhan($id){
+        $this->db->select('*');
+		$this->db->from('keluhan');
+        $this->db->where('keluhan.id_keluhan', $id);
+        return $this->db->get()->result_array();
+    }
 }
