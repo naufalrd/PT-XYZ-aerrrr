@@ -14,13 +14,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $no=1;
+                foreach ($keluhan as $data) :?>
                     <tr class="text-center">
-                        <th>1</th>
-                        <td>Pelanggan</td>
-                        <td>Keran WC di Pattimura Macet</td>
-                        <td>02-02-2022</td>
-                        <td><a href="<?= site_url(); ?>operator/teruskan" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Teruskan</a></td>
+                        <th><?= $no++?></th>
+                        <td><?= $data['nama_depan']." ".$data['nama_belakang']?></td>
+                        <td><?= $data['judul']?></td>
+                        <td><?= $data['tanggal_keluhan']?></td>
+                        <td><a href="<?= site_url(); ?>operator/tolak/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Tolak</a><a href="<?= site_url(); ?>operator/teruskan/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Teruskan</a></td>
                     </tr>
+                    <?php endforeach ?>
                 </tbody>
                 
             </table>

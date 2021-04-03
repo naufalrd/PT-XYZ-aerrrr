@@ -113,4 +113,22 @@ class Pelanggan extends CI_Controller
         $this->pelanggan_model->update_data($where,$data,$table);
         redirect('pelanggan/details/'.$id);
     }
+  
+    public function update_biodata(){
+        $nama_depan = $this->input->post('nama_depan');
+        $nama_belakang = $this->input->post('nama_belakang');
+        $alamat = $this->input->post('alamat');
+        $data = [
+            'nama_depan' => $nama_depan,
+            'nama_belakang' => $nama_belakang,
+            'alamat' => $alamat
+        ];
+        $where =[
+            'username' => $this->input->post('username')
+        ];
+        $table = 'user';
+        $this->pelanggan_model->update_data($where,$data,$table);
+        redirect('pelanggan');
+    }
+
 }

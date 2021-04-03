@@ -18,14 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $no=1;
+                    foreach ($user as $data) :?>
                     <tr class="text-center">
-                        <th>1</th>
-                        <td>Naufal Rafif</td>
-                        <td>Username</td>
-                        <td>Alamat</td>
-                        <td>Level</td>
-                        <td><a href="<?= site_url(); ?>operator/edit_form" class="btn btn-sm btn-primary"><i class="bx bx-edit"></i> Edit</a></td>
+                        <th><?= $no++ ?></th>
+                        <td><?= $data['nama_depan']." ".$data['nama_belakang']?></td>
+                        <td><?= $data['username']?></td>
+                        <td><?= $data['alamat']?></td>
+                        <td><?= $data['nama_bidang']?></td>
+                        <td><a href="<?= site_url(); ?>operator/edit_form/<?= $data['id_user'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-edit"></i> Edit</a>  <a href="<?= site_url(); ?>operator/delete_user/<?= $data['id_user'] ?>" class="btn btn-sm btn-danger"><i class="bx bx-delete"></i> Delete</a></td>
                     </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
