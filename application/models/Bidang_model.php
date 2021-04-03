@@ -11,7 +11,7 @@ class Bidang_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    //atas
+    //home atas
     public function get_keluhan($id_bidang){
         $this->db->select('*');
         $this->db->from('keluhan');
@@ -22,7 +22,7 @@ class Bidang_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    //bawah
+    //home tengah
     public function get_keluhanDitangani($id_bidang){
         $this->db->select('*');
         $this->db->from('keluhan');
@@ -31,6 +31,17 @@ class Bidang_model extends CI_Model
         // $this->db->join('feedback',' feedback.id_keluhan = keluhan.id_keluhan');
         $this->db->where('keluhan.id_bidang', $id_bidang);
         $this->db->where('keluhan.status', 'Ditinjau');
+        return $this->db->get()->result_array();
+    }
+
+    //home bawah
+    public function get_keluhanSelesai($id_bidang){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->join('user',"user.id_user = keluhan.id_user");
+        $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
+        $this->db->where('keluhan.id_bidang', $id_bidang);
+        $this->db->where('keluhan.status', 'Selesai');
         return $this->db->get()->result_array();
     }
 
