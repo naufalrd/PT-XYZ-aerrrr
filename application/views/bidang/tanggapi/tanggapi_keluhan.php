@@ -23,7 +23,6 @@
         </div>
         <?php endforeach ?>
         <!-- Komentar Bidang -->
-        <div class="container mt-5">
             <div class="row" id="showForm text-center">
                 <form action="<?= site_url(); ?>bidang/submit_tanggapan" method="POST">
                 <input type="hidden" name="id_keluhan" value="<?= $keluhan[0]['id_keluhan'] ?>" required>

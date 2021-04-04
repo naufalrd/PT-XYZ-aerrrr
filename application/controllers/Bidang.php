@@ -28,12 +28,21 @@ class Bidang extends CI_Controller
         $this->load->view('template/footer.php');
     }
 
-    public function tanggapi($id_keluhan)
+    public function tanggapi_feedback($id_keluhan)
     {
         $data['feedback'] = $this->bidang_model->monitor_feedback($id_keluhan);
         $data['keluhan'] =  $this->bidang_model->get_keluhanbyId($id_keluhan);
         $this->load->view('template/header.php');
-        $this->load->view('bidang/tanggapi.php',$data);
+        $this->load->view('bidang/tanggapi/tanggapi_feedback.php',$data);
+        $this->load->view('template/footer.php');
+    }
+
+    public function tanggapi_keluhan($id_keluhan)
+    {
+        $data['feedback'] = $this->bidang_model->monitor_feedback($id_keluhan);
+        $data['keluhan'] =  $this->bidang_model->get_keluhanbyId($id_keluhan);
+        $this->load->view('template/header.php');
+        $this->load->view('bidang/tanggapi/tanggapi_feedback.php',$data);
         $this->load->view('template/footer.php');
     }
 
