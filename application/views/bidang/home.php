@@ -1,6 +1,6 @@
 <div class="container mb-container">
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
-        <h1 class="text-center">Keluhan</h1>
+        <h1 class="text-center">Keluhan Masuk</h1>
         <div class="container text-center overflow-auto">
 
             <table class="table">
@@ -22,7 +22,7 @@
                         <td><?= $data['judul']?></td>
                         <td><?= $data['tanggal_keluhan']?></td>
                         <td><?= $data['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/tanggapi/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Tanggapi</a></td>
+                        <td><a href="<?= site_url(); ?>bidang/tanggapi_keluhan/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Tanggapi</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
@@ -52,7 +52,7 @@
                         <td><?= $data2['judul']?></td>
                         <td><?= $data2['tanggal_keluhan']?></td>
                         <td><?= $data2['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/tanggapi/<?= $data2['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
+                        <td><a href="<?= site_url(); ?>bidang/tanggapi_feedback/<?= $data2['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
