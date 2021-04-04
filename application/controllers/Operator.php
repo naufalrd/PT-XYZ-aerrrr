@@ -49,7 +49,6 @@ class Operator extends CI_Controller
     public function user()
     {
         $data['user'] = $this->operator_model->search_user();
-        var_dump($data);
         $this->load->view('template/header.php');
         $this->load->view('operator/user/home.php',$data);
         $this->load->view('template/footer.php');

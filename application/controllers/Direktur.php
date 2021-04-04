@@ -16,7 +16,6 @@ class Direktur extends CI_Controller
     public function index()
     {
         $data['keluhan'] = $this->direktur_model->search_keluhan();
-        var_dump($data);
         $this->load->view('template/header.php');
         $this->load->view('direktur/home.php',$data);
         $this->load->view('template/footer.php');

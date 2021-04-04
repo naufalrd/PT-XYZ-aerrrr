@@ -114,12 +114,14 @@ class Operator_model extends CI_Model{
         $this->db->select('id_user');
         $this->db->from('user');
         #$id_dokter = $this -> db -> where('username_dokter',$this->session->userdata('username')) -> get() -> result_array();
-        
+        $password = $this->input->post('password');
+        $pass = password_hash($password, PASSWORD_DEFAULT);
+            
         $data = array(
             'nama_depan' => $this->input->post('nama_depan'),
             'nama_belakang' => $this->input->post('nama_belakang'),
             'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'),
+            'password' => $pass,
             'alamat' => $this->input->post('alamat'),
             'id_level' => $this->input->post('id_level')
         );
