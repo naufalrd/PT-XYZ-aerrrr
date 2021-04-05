@@ -17,4 +17,14 @@ class Auth_model extends CI_Model
             return array();
         }
     }
+
+    public function cek_bidang($user)
+    {
+        $this->db->select('*');
+		$this->db->from('level');
+        $this->db->join('user', 'user.id_level = level.id_level');
+		$this->db->join('bidang', 'bidang.id_bidang = level.id_bidang');
+        $this->db->where('user.username', $user);
+        return $this->db->get()->result_array()[0]['id_bidang'];
+    }
 }

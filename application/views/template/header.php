@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container-fluid h100vh poppins-light">
+    <div class="container-fluid h100vh poppins-light bg-container">
         <div class="row ">
             <!-- Sidebar -->
             <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block"></div>
@@ -30,7 +30,7 @@
                 <ul class="navbar-nav mb-lg-0 my-3">
                     <!-- Pelanggan -->
                     <li class="nav-item p-1<?= $this->session->userdata('level') != '1' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == '' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
+                        <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == '' || $this->uri->segment(2) == 'addkeluhan'? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
                     </li>
                     <li class="nav-item p-1<?= $this->session->userdata('level') != '1' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'pelanggan' && $this->uri->segment(2) == 'biodata' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>pelanggan/biodata/<?= $this->session->userdata('username')?>"><span class="bx bx-user">&nbsp;&nbsp;</span> Biodata</a>

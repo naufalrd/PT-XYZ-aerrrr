@@ -12,7 +12,7 @@ class Pelanggan extends CI_Controller
             redirect('auth/check_level');
         }
     }
-
+    
     public function index(){
         $data['keluhan'] = $this->pelanggan_model->get_keluhan();
         $data['riwayat'] = $this->pelanggan_model->get_riwayat();

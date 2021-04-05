@@ -17,15 +17,17 @@ class Pelanggan_model extends CI_Model{
 
     public function get_keluhan(){
         $this->db->from('keluhan');
-        $this->db->where('id_user',$this->session->userdata('id_user'));
-        $this->db->where('keluhan.status', ''); 
+        $id_user = $this->session->userdata('id_user');
+        $where = "id_user='$id_user' AND (status = '' OR status = 'Ditinjau')";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 
     public function get_riwayat(){
         $this->db->from('keluhan');
-        $this->db->where('id_user',$this->session->userdata('id_user'));
-        $this->db->where('keluhan.status !=',''); 
+        $id_user = $this->session->userdata('id_user');
+        $where = "id_user='$id_user' AND status = 'Selesai'";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
     

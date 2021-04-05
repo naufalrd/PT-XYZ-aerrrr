@@ -104,11 +104,12 @@ class Auth extends CI_Controller
 
                 if (password_verify($pass, $cek_login->password)) {
                     // if the username and password is a match
+                    $this->session->set_userdata('id_user', $cek_login->id_user);
                     $this->session->set_userdata('username', $cek_login->username);
                     $this->session->set_userdata('nama_depan', $cek_login->nama_depan);
                     $this->session->set_userdata('nama_belakang', $cek_login->nama_belakang);
                     $this->session->set_userdata('level', $cek_login->id_level);
-                    $this->session->set_userdata('id_user', $cek_login->id_user);
+                    $this->session->set_userdata('id_bidang', $this->auth_model->cek_bidang($this->session->userdata('username')));
                     
                     if ($this->session->userdata('level') == '1') {
                         redirect('/pelanggan');
@@ -145,6 +146,7 @@ class Auth extends CI_Controller
             } else if ($this->session->userdata('level') == '3') {
                 redirect('/direktur');
             } else if ($this->session->userdata('level') == '4') {
+                // var_dump($this->auth_model->cek_bidang($this->session->userdata('id_user')));
                 redirect('/bidang');
             } else if ($this->session->userdata('level') == '5') {
                 redirect('/bidang');

@@ -22,7 +22,9 @@
                         <td><?= $data['judul']?></td>
                         <td><?= $data['tanggal_keluhan']?></td>
                         <td><?= $data['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/tanggapi_keluhan/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Tanggapi</a></td>
+                        <td><a href="<?= site_url(); ?>bidang/tanggapi_keluhan/<?= $data['id_keluhan'] ?>" class="btn btn-sm <?= $data['status'] == 'Diteruskan' ? 'btn-primary' : 'btn-success' ;?>">
+                        <i class="bx <?= $data['status'] == 'Diteruskan' ? 'bx-right-arrow' : 'bx-message-alt-dots' ;?>"></i>
+                        <?= $data['status'] == 'Diteruskan' ? 'Tanggapi' : 'Balas' ;?></a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
@@ -30,38 +32,7 @@
         </div>
     </div>
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
-        <h1 class="text-center">Keluhan Dalam Proses Penanganan</h1>
-        <div class="container text-center overflow-auto">
-
-            <table class="table">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Pelanggan</th>
-                        <th scope="col">Keluhan</th>
-                        <th scope="col">Tanggal Keluhan</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $ni= 1; foreach ($ditangani as $data2) :?>
-                    <tr class="text-center">    
-                        <th><?= $ni++?></th>
-                        <td><?= $data2['nama_depan']." ".$data2['nama_belakang']?></td>
-                        <td><?= $data2['judul']?></td>
-                        <td><?= $data2['tanggal_keluhan']?></td>
-                        <td><?= $data2['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/tanggapi_feedback/<?= $data2['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
-                    </tr>
-                <?php endforeach ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
-        <h1 class="text-center">Keluhan Terselesaikan</h1>
+        <h1 class="text-center">Keluhan Ditinjau</h1>
         <div class="container text-center overflow-auto">
 
             <table class="table">
@@ -83,7 +54,37 @@
                         <td><?= $data3['judul']?></td>
                         <td><?= $data3['tanggal_keluhan']?></td>
                         <td><?= $data3['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
+                        <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+        <h1 class="text-center">Riwayat Keluhan</h1>
+        <div class="container text-center overflow-auto">
+
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pelanggan</th>
+                        <th scope="col">Keluhan</th>
+                        <th scope="col">Tanggal Keluhan</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $ni= 1; foreach ($selesai as $data3) :?>
+                    <tr class="text-center">    
+                        <th><?= $ni++?></th>
+                        <td><?= $data3['nama_depan']." ".$data3['nama_belakang']?></td>
+                        <td><?= $data3['judul']?></td>
+                        <td><?= $data3['tanggal_keluhan']?></td>
+                        <td><?= $data3['status']?></td>
+                        <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

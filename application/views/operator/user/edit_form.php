@@ -24,8 +24,8 @@
                         <label for="inputEmail" class="form-controll visually-hidden">Level</label>
                         <select class="form-select" id="validationCustom04" name="id_level" required>
                             <option selected disabled value="">Choose...</option>
-                            <?php $no = 1;foreach ($level as $row) :?>
-                            <option value="<?= $row['id_level'] ?>"> <?= $row['id_level'] ?>. <?= $row['nama_level'] ?> - <?= $row['nama_bidang'] ?></option>
+                            <?php foreach ($level as $row) :?>
+                            <option value="<?= $row['id_level'] ?>" class="text-uppercase" <?= $row['id_level'] == $data['id_level'] ? 'selected' : '';?>> <?= $row['nama_level'] ?> <?= $row['nama_bidang'] == 'Non Bidang' ? '' : $row['nama_bidang'] ?></option>
                             <?php endforeach ?>
                         </select>
                         <div class="invalid-feedback">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group col-12 mb-3">
                         <label for="inputEmail" class="form-controll visually-hidden">Alamat</label>
-                        <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="<?= $data['alamat'] ?>"></textarea>
+                        <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="<?= $data['alamat'] ?>"><?= $data['alamat'] ?></textarea>
                     </div>
                 </div>
                 <button class="btn btn-lg btn-primary" type="submit">Edit User</button>

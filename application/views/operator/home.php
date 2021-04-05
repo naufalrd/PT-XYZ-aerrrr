@@ -21,7 +21,7 @@
                         <td><?= $data['nama_depan']." ".$data['nama_belakang']?></td>
                         <td><?= $data['judul']?></td>
                         <td><?= $data['tanggal_keluhan']?></td>
-                        <td><a href="<?= site_url(); ?>operator/tolak/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Tolak</a><a href="<?= site_url(); ?>operator/teruskan/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-right-arrow"></i> Teruskan</a></td>
+                        <td><a href="<?= site_url(); ?>operator/teruskan/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary mx-1"><i class="bx bx-right-arrow"></i> Teruskan</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

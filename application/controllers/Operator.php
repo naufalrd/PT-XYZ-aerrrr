@@ -21,9 +21,9 @@ class Operator extends CI_Controller
         $this->load->view('template/footer.php');
     }
 
-    public function teruskan()
+    public function teruskan($id)
     {
-        $data['keluhan'] = $this->operator_model->search_keluhan();
+        $data['keluhan'] = $this->operator_model->search_teruskan($id);
         $data['bidang'] = $this->operator_model->search_bidang();
         $this->load->view('template/header.php');
         $this->load->view('operator/teruskan.php',$data);
@@ -64,7 +64,6 @@ class Operator extends CI_Controller
     public function edit_form($id){
         $data['user'] = $this->operator_model->search_iduser($id);
         $data['level'] = $this->operator_model->search_level();
-        var_dump($data);
         $this->load->view('template/header.php');
         $this->load->view('operator/user/edit_form.php',$data);
         $this->load->view('template/footer.php');
@@ -73,7 +72,7 @@ class Operator extends CI_Controller
     public function edit_user($id)
 	{
 		$this->operator_model->update_user($id);
-		redirect('operator');
+		redirect('operator/user');
 	}
 
     // proses menambahkan user

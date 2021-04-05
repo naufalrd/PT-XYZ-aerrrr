@@ -28,11 +28,14 @@
                             Please select a valid state.
                         </div>
                     </div>
+
                     <div class="col-12 mt-3">
+                        <a href="<?= site_url(); ?>operator/tolak/<?= $keluhan[0]['id_keluhan']; ?>" class="btn btn-danger mx-1"> Tolak</a>
                         <button class="btn btn-primary" type="submit">Submit form</button>
                     </div>
                 </form>
             <?php endforeach ?>
+
         </div>
     </div>
 </div>

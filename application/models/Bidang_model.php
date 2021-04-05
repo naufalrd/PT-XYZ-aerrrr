@@ -12,36 +12,26 @@ class Bidang_model extends CI_Model
     }
 
     //home atas
-    public function get_keluhan($id_bidang){
+    public function get_keluhan(){
         $this->db->select('*');
         $this->db->from('keluhan');
         $this->db->join('user',"user.id_user = keluhan.id_user");
         $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.id_bidang', $id_bidang);
-        $this->db->where('keluhan.status', 'Diteruskan');
-        return $this->db->get()->result_array();
-    }
-
-    //home tengah
-    public function get_keluhanDitangani($id_bidang){
-        $this->db->select('*');
-        $this->db->from('keluhan');
-        $this->db->join('user',"user.id_user = keluhan.id_user");
-        $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
-        // $this->db->join('feedback',' feedback.id_keluhan = keluhan.id_keluhan');
-        $this->db->where('keluhan.id_bidang', $id_bidang);
-        $this->db->where('keluhan.status', 'Ditinjau');
+        $id_bidang = $this->session->userdata('id_bidang');
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Diteruskan' OR status='Ditinjau')";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 
     //home bawah
-    public function get_keluhanSelesai($id_bidang){
+    public function get_keluhanSelesai(){
         $this->db->select('*');
         $this->db->from('keluhan');
         $this->db->join('user',"user.id_user = keluhan.id_user");
         $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.id_bidang', $id_bidang);
-        $this->db->where('keluhan.status', 'Selesai');
+        $id_bidang = $this->session->userdata('id_bidang');
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai' OR status='Ditinjau')";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 
@@ -68,15 +58,17 @@ class Bidang_model extends CI_Model
         $this->db->where('id_keluhan',$id_keluhan)->update('keluhan', $data);
     }
 
-    // public function get_riwayatKeluhanbyId($id_keluhan){
-    //     $this->db->select('*');
-    //     $this->db->from('keluhan');
-    //     $this->db->join('user',"user.id_user = keluhan.id_user");
-    //     $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
-    //     $this->db->join('feedback',' feedback.id_keluhan = keluhan.id_keluhan');
-    //     $this->db->where('keluhan.id_keluhan', $id_keluhan);
-    //     return $this->db->get()->result_array();
-    // }
+    public function get_riwayatKeluhanbyId($id_keluhan){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->join('user',"user.id_user = keluhan.id_user");
+        $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
+        $this->db->join('feedback',' feedback.id_keluhan = keluhan.id_keluhan');
+        $this->db->where('keluhan.id_keluhan', $id_keluhan);
+        return $this->db->get()->result_array();
+    }
+
+
 
     public function monitor_feedback($id_keluhan){
         $this->db->select('*');

@@ -12,6 +12,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Keluhan</th>
                         <th scope="col">Tanggal</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,13 +21,15 @@
                         <th><?= $no++ ?></th>
                         <td><?= $a['judul']?></td>
                         <td><?= $a['tanggal_keluhan']?></td>
+                        <td><a href="<?= site_url() ;?>pelanggan/details/<?= $a['id_keluhan']?>" class="btn btn-sm <?php if($a['status']=='Ditinjau'){echo 'btn-primary';}else if($a['status']=='Ditolak'){echo 'btn-danger';} else {echo 'btn-success';};?>"><i class="bx <?php if($a['status']=='Ditinjau'){echo 'bx-message-error';}else if($a['status']=='Ditolak'){echo 'bx-message-error';} else {echo 'bx-message-x';};?>"></i> <?php if($a['status']=='Ditinjau'){echo 'Balas';}else if($a['status']=='Ditolak'){echo 'Benahi';} else {echo 'Tunggu';};?></a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    
+    <div class="<?= !isset($riwayat[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center mb-5">Riwayat Keluhan</h1>
         <div class="container text-center overflow-auto">
 
