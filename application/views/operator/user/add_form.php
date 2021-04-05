@@ -42,8 +42,8 @@
                         <label for="inputEmail" class="form-controll visually-hidden">Level</label>
                         <select class="form-select" id="validationCustom04" name="id_level" required>
                             <option selected disabled value="">Choose...</option>
-                            <?php $no = 1;foreach ($level as $row) :?>
-                            <option value="<?= $row['id_level'] ?>"> <?= $row['id_level'] ?>. <?= $row['nama_level'] ?> - <?= $row['nama_bidang'] ?></option>
+                            <?php foreach ($level as $row) :?>
+                            <option value="<?= $row['id_level'] ?>" class="text-uppercase"> <?= $row['nama_level'] ?> <?= $row['nama_bidang'] == 'Non Bidang' ? '' : $row['nama_bidang'] ?></option>
                             <?php endforeach ?>
                         </select>
                         <div class="invalid-feedback">

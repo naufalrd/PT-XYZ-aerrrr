@@ -12,7 +12,7 @@ class Pelanggan extends CI_Controller
             redirect('auth/check_level');
         }
     }
-    
+
     public function index(){
         $data['keluhan'] = $this->pelanggan_model->get_keluhan();
         $data['riwayat'] = $this->pelanggan_model->get_riwayat();
@@ -43,12 +43,12 @@ class Pelanggan extends CI_Controller
         $this->load->helper('date');
         date_default_timezone_set('Asia/Jakarta');
         $now = date('Y-m-d');
-        $keluhan = $this->input->post('keluhan');
         $data = [
             'id_user' => $this->session->userdata('id_user'),
             'judul' => $this->input->post('judul_keluhan'),
             'keluhan' => $this->input->post('keluhan'),
             'status' => "",
+            'status_pesan' => "pelanggan",
             'tanggal_keluhan' => $now
         ];
         $table = 'keluhan';
@@ -65,6 +65,7 @@ class Pelanggan extends CI_Controller
     }
 
     public function tambah_respon($id,$idkeluhan){
+        // ini buat tabel feedback
         $where=[
             'id_feedback'=>$id
         ];
@@ -72,7 +73,16 @@ class Pelanggan extends CI_Controller
             'feedback'=>$this->input->post('respon_pelanggan')
         ];
         $table='feedback';
+        // ini buat tabel keluhan
+        $where2=[
+            'id_keluhan'=>$id
+        ];
+        $data2=[
+            'status_pesan'=>'pelanggan'
+        ];
+        $table2='keluhan';
         $this->pelanggan_model->update_data($where,$data,$table);
+        $this->pelanggan_model->update_data($where2,$data2,$table2);
         redirect('pelanggan/details/'.$idkeluhan);
     }
 
@@ -93,8 +103,17 @@ class Pelanggan extends CI_Controller
             'feedback'=>"Baik,terima kasih saya sudah puas :)"
         ];
         $table2='feedback';
-        $this->pelanggan_model->update_data($where2,$data2,$table2);
+        //ini buat tabel status pesan
+        $where3=[
+            'id_keluhan'=>$id
+        ];
+        $data3=[
+            'status_pesan'=>""
+        ];
+        $table3='keluhan';
         $this->pelanggan_model->update_data($where,$data,$table);
+        $this->pelanggan_model->update_data($where2,$data2,$table2);
+        $this->pelanggan_model->update_data($where3,$data3,$table3);
         redirect('pelanggan/details/'.$id);
     }
   

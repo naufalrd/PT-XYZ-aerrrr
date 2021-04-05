@@ -18,7 +18,19 @@ class Bidang_model extends CI_Model
         $this->db->join('user',"user.id_user = keluhan.id_user");
         $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
         $id_bidang = $this->session->userdata('id_bidang');
-        $where = "keluhan.id_bidang='$id_bidang' AND (status='Diteruskan' OR status='Ditinjau')";
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Diteruskan' OR status='Ditinjau') AND status_pesan = 'pelanggan'";
+        $this->db->where($where);
+        return $this->db->get()->result_array();
+    }
+
+    //home tengah
+    public function get_tinjauan(){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->join('user',"user.id_user = keluhan.id_user");
+        $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
+        $id_bidang = $this->session->userdata('id_bidang');
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Diteruskan' OR status='Ditinjau') AND status_pesan = 'bidang'";
         $this->db->where($where);
         return $this->db->get()->result_array();
     }
@@ -30,7 +42,7 @@ class Bidang_model extends CI_Model
         $this->db->join('user',"user.id_user = keluhan.id_user");
         $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
         $id_bidang = $this->session->userdata('id_bidang');
-        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai' OR status='Ditinjau')";
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai' OR status='Ditinjau') AND status_pesan = ''";
         $this->db->where($where);
         return $this->db->get()->result_array();
     }
@@ -53,7 +65,8 @@ class Bidang_model extends CI_Model
     public function update_ditinjau($id_keluhan)
     {   
         $data = array(
-            'status' => 'Ditinjau'
+            'status' => 'Ditinjau',
+            'status_pesan' => 'bidang'
         );
         $this->db->where('id_keluhan',$id_keluhan)->update('keluhan', $data);
     }

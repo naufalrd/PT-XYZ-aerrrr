@@ -47,14 +47,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $ni= 1; foreach ($selesai as $data3) :?>
+                    <?php $ni= 1; foreach ($tinjauan as $data2) :?>
                     <tr class="text-center">    
                         <th><?= $ni++?></th>
-                        <td><?= $data3['nama_depan']." ".$data3['nama_belakang']?></td>
-                        <td><?= $data3['judul']?></td>
-                        <td><?= $data3['tanggal_keluhan']?></td>
-                        <td><?= $data3['status']?></td>
-                        <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
+                        <td><?= $data2['nama_depan']." ".$data2['nama_belakang']?></td>
+                        <td><?= $data2['judul']?></td>
+                        <td><?= $data2['tanggal_keluhan']?></td>
+                        <td><?= $data2['status']?></td>
+                        <td><a href="<?= site_url(); ?>bidang/details/<?= $data2['id_keluhan'] ?>" class="btn btn-sm <?= $data2['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data2['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

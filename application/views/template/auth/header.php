@@ -19,6 +19,6 @@
 <body class="text-center">
 
     <main class="form-signin">
-            <img class="mb-4" src="<?= base_url() ?>/assets/logo.png" alt="" width="72" height="72">
+            <a href="<?= site_url() ;?>"><img class="mb-4" src="<?= base_url() ?>/assets/logo.png" alt="" width="72" height="72"></a>
             
             

@@ -20,6 +20,7 @@ class Bidang extends CI_Controller
     public function index()
     {
         $data['keluhan'] = $this->bidang_model->get_keluhan();
+        $data['tinjauan'] = $this->bidang_model->get_tinjauan();
         $data['selesai'] = $this->bidang_model->get_keluhanSelesai();
         $this->load->view('template/header.php');
         $this->load->view('bidang/home.php',$data);

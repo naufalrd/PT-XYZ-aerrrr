@@ -6,7 +6,7 @@ class Direktur_model extends CI_Model{
 		$this->db->join('user', 'user.id_user = keluhan.id_user');
         //$this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
         $this->db->where('keluhan.status !=', 'Ditolak');
-        $this->db->or_where('keluhan.status !=', '');
+        $this->db->where('keluhan.status !=', '');
         $this->db->order_by('keluhan.tanggal_keluhan', 'asc');
         return $this->db->get()->result_array();
     }

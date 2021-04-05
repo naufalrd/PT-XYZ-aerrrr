@@ -96,11 +96,11 @@ class Operator extends CI_Controller
             }
         }
 
-        redirect('operator/user/home.php');
+        redirect('operator/user');
     }
 
     public function delete_user($id){
         $this->operator_model->delete_user($id);
-        redirect('operator/user/home.php');
+        redirect('operator/user');
     }
 }
