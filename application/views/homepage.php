@@ -6,7 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>RS Sehat Selalu</title>
-        <link rel="icon" type="image/x-icon" href="<?= base_url() ?>/assets/kesehatan-icon.png" />
+        <link rel="icon" type="image/x-icon" href="<?= base_url() ?>/assets/logo.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -19,15 +19,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-hospital-user" style="color: greenyellow;"></i> RS Sehat Selalu</a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-water" style="color: greenyellow;"></i> Air Mineral XYZ</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="<?= site_url('auth/register'); ?>">Daftar</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="<?= site_url('auth/login'); ?>">Login</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="<?= site_url('auth/login'); ?>">Berikan Keluhan</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,7 +36,7 @@
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Selamat Datang</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Di Situs Pelayanan RS Sehat Selalu,<br/>Kesehatan Anda Adalah Kebahagiaan Kami</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Di Situs Pelayanan Pelanggan PT XYZ Mineral Water,<br/>Kepuasan Anda Adalah Kebahagiaan Kami</h2>
                 </div>
             </div>
         </header>
@@ -60,7 +59,7 @@
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">rssehatslalu@gmail.com</a></div>
+                                <div class="small text-black-50"><a href="#!">ptxyz@gmail.com</a></div>
                             </div>
                         </div>
                     </div>
