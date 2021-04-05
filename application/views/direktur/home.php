@@ -20,7 +20,7 @@
                         <th><?= $no++?></th>
                         <td><?= $data['nama_depan']." ".$data['nama_belakang']?></td>
                         <td><?= $data['judul']?></td>
-                        <td><?= $data['tanggal_keluhan']?></td>
+                        <td><?= date_indo($data['tanggal_keluhan'])?></td>
                         <td><a href="<?= site_url(); ?>direktur/details/<?= $data['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Detail</a></td>
                     </tr>
                 <?php endforeach ?>

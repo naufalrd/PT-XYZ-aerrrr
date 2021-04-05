@@ -1,5 +1,5 @@
 <div class="container mb-container">
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="<?= !isset($keluhan[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center">Keluhan Masuk</h1>
         <div class="container text-center overflow-auto">
 
@@ -20,7 +20,7 @@
                         <th><?= $no++?></th>
                         <td><?= $data['nama_depan']." ".$data['nama_belakang']?></td>
                         <td><?= $data['judul']?></td>
-                        <td><?= $data['tanggal_keluhan']?></td>
+                        <td><?= date_indo($data['tanggal_keluhan'])?></td>
                         <td><?= $data['status']?></td>
                         <td><a href="<?= site_url(); ?>bidang/tanggapi_keluhan/<?= $data['id_keluhan'] ?>" class="btn btn-sm <?= $data['status'] == 'Diteruskan' ? 'btn-primary' : 'btn-success' ;?>">
                         <i class="bx <?= $data['status'] == 'Diteruskan' ? 'bx-right-arrow' : 'bx-message-alt-dots' ;?>"></i>
@@ -31,7 +31,7 @@
             </table>
         </div>
     </div>
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="<?= !isset($tinjauan[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center">Keluhan Ditinjau</h1>
         <div class="container text-center overflow-auto">
 
@@ -52,7 +52,7 @@
                         <th><?= $ni++?></th>
                         <td><?= $data2['nama_depan']." ".$data2['nama_belakang']?></td>
                         <td><?= $data2['judul']?></td>
-                        <td><?= $data2['tanggal_keluhan']?></td>
+                        <td><?= date_indo($data2['tanggal_keluhan'])?></td>
                         <td><?= $data2['status']?></td>
                         <td><a href="<?= site_url(); ?>bidang/details/<?= $data2['id_keluhan'] ?>" class="btn btn-sm <?= $data2['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data2['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>
@@ -61,7 +61,7 @@
             </table>
         </div>
     </div>
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="<?= !isset($selesai[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center">Riwayat Keluhan</h1>
         <div class="container text-center overflow-auto">
 
@@ -82,7 +82,7 @@
                         <th><?= $ni++?></th>
                         <td><?= $data3['nama_depan']." ".$data3['nama_belakang']?></td>
                         <td><?= $data3['judul']?></td>
-                        <td><?= $data3['tanggal_keluhan']?></td>
+                        <td><?= date_indo($data3['tanggal_keluhan'])?></td>
                         <td><?= $data3['status']?></td>
                         <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>

@@ -10,18 +10,17 @@
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h3 class="fs-3 text-start"><?= $keluhan[0]['judul'] ?></h3>
         <p class="fs-6"><?= $keluhan[0]['keluhan'] ?></p>
-        <p class="mb-3"><?= $keluhan[0]['username'] ?> ( <?= $keluhan[0]['tanggal_keluhan'] ?> )</p>
         <?php foreach ($feedback as $data) : ?>
         <div class="d-flex justify-content-end">
             <div class="w-75 border border-info rounded-3 shadow-sm p-3 mb-3">
                 <p class="text-secondary"><?= $data['respon'] ?></p>
-                <p class="mb-0"><?= $data['nama_bidang'] ?> - <?= $data['tanggal_respon'] ?></p>
+                <p class="mb-0"><?= $data['nama_bidang'] ?> - <?= date_indo($data['tanggal_respon']) ?></p>
             </div>
         </div>
         <div class="d-flex justify-content-start <?= $data['feedback'] == '' ? 'd-none' : ''?>">
             <div class="w-75 border border-success rounded-3 shadow-sm p-3 mb-3">
                 <p class="text-secondary"><?= $data['feedback'] ?></p>
-                <p class="mb-0"><?= $data['username'] ?> - <?= $data['tanggal_keluhan'] ?></p>
+                <p class="mb-0"><?= $data['username'] ?> - <?= date_indo($data['tanggal_keluhan']) ?></p>
             </div>
         </div>
         <?php endforeach ?>
