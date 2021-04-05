@@ -4,7 +4,7 @@
         <div class="container text-start overflow-auto">
             <?php foreach ($keluhan as $data) : ?>
                 <p class="fs-3 mb-0"><?= $data['judul'] ?></p>
-                <p class="fs-6"><?= $data['keluhan'] ?></p>
+                <div><?= $data['keluhan'] ?></div>
             <?php endforeach ?>
         </div>
         <div class="container mt-3">
@@ -12,11 +12,6 @@
                 <form action="<?= base_url() ?>operator/teruskanbidang/" method="POST">
                     <div class="col-12">
                         <input type="hidden" name="id_keluhan" value="<?= $data['id_keluhan'] ?>" class="form-control shadow-none" required>
-                        <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>" class="form-control shadow-none" required>
-                        <input type="hidden" name="judul" value="<?= $data['judul'] ?>" class="form-control shadow-none" required>
-                        <input type="hidden" name="keluhan" value="<?= $data['keluhan'] ?>" class="form-control shadow-none" required>
-                        <input type="hidden" name="tanggal_keluhan" value="<?= $data['tanggal_keluhan'] ?>" class="form-control shadow-none" required>
-                        <input type="hidden" name="status" value="<?= $data['status'] ?>" class="form-control shadow-none" required>
                         <label for="validationCustom04" class="form-label">Nama Bidang</label>
                         <select class="form-select" name="id_bidang" id="validationCustom04" required>
                             <option selected disabled value="">Choose...</option>

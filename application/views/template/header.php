@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link type="text/css" href="<?= base_url(); ?>/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/vendor/chartist/dist/chartist.min.css">
-    <link rel="icon" type="image/png" href="<?= base_url() ;?>/assets/kesehatan-icon.png" />
+    <link rel="icon" type="image/png" href="<?= base_url() ;?>/assets/logo.png" />
     <title class="text-uppercase">Dashboard - <?= $this->uri->segment(1); ?></title>
 </head>
 

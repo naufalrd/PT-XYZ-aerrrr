@@ -100,10 +100,6 @@ class Operator_model extends CI_Model
 
         $data = array(
             'id_keluhan' => $this->input->post('id_keluhan'),
-            'id_user' => $this->input->post('id_user'),
-            'judul' => $this->input->post('judul'),
-            'keluhan' => $this->input->post('keluhan'),
-            'tanggal_keluhan' => $this->input->post('tanggal_keluhan'),
             'status' => 'Diteruskan',
             'id_bidang' =>   $this->input->post('id_bidang')
         );
