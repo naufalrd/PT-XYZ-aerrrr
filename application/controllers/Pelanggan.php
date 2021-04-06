@@ -75,7 +75,7 @@ class Pelanggan extends CI_Controller
         $table='feedback';
         // ini buat tabel keluhan
         $where2=[
-            'id_keluhan'=>$id
+            'id_keluhan'=>$idkeluhan
         ];
         $data2=[
             'status_pesan'=>'pelanggan'

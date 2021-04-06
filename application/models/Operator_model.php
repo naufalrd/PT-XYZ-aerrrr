@@ -57,6 +57,7 @@ class Operator_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('bidang');
+        $this->db->where('bidang.id_bidang >=', '2');
         return $this->db->get()->result_array();
     }
 
