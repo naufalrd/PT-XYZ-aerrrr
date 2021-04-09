@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Apr 2021 pada 14.33
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.8
+-- Generation Time: Apr 09, 2021 at 10:17 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,28 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bidang`
+-- Table structure for table `bidang`
 --
 
 CREATE TABLE `bidang` (
   `id_bidang` int(11) NOT NULL,
-  `nama_bidang` varchar(50) NOT NULL
+  `nama_bidang` varchar(50) NOT NULL,
+  `deskripsi_bidang` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `bidang`
+-- Dumping data for table `bidang`
 --
 
-INSERT INTO `bidang` (`id_bidang`, `nama_bidang`) VALUES
-(1, 'Non Bidang'),
-(2, 'Jaminan Kualitas'),
-(3, 'Pembelian'),
-(4, 'Distribusi');
+INSERT INTO `bidang` (`id_bidang`, `nama_bidang`, `deskripsi_bidang`) VALUES
+(1, 'Non Bidang', 'bagian selain bidang'),
+(2, 'Jaminan Kualitas', 'devisi yang bertanggung jawab terhadap kualitas produk'),
+(3, 'Pembelian', 'devisi yang bertanggung jawab terhadap standar harga produk'),
+(4, 'Distribusi', 'devisi yang bertanggung jawab terhadap distribusi produk');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `feedback`
+-- Table structure for table `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -60,7 +61,7 @@ CREATE TABLE `feedback` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keluhan`
+-- Table structure for table `keluhan`
 --
 
 CREATE TABLE `keluhan` (
@@ -71,13 +72,14 @@ CREATE TABLE `keluhan` (
   `tanggal_keluhan` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `status_pesan` varchar(255) NOT NULL,
-  `id_bidang` int(11) DEFAULT NULL
+  `id_bidang` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `level`
+-- Table structure for table `level`
 --
 
 CREATE TABLE `level` (
@@ -87,7 +89,7 @@ CREATE TABLE `level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `level`
+-- Dumping data for table `level`
 --
 
 INSERT INTO `level` (`id_level`, `nama_level`, `id_bidang`) VALUES
@@ -101,11 +103,12 @@ INSERT INTO `level` (`id_level`, `nama_level`, `id_bidang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
+  `email_user` varchar(255) NOT NULL,
   `nama_depan` varchar(50) NOT NULL,
   `nama_belakang` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -115,34 +118,34 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `alamat`, `id_level`) VALUES
-(1, 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', 'Jl Kenari', 1),
-(2, 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', 'Sleman', 2),
-(3, 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', 'lalalalala', 3),
-(5, 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', 'bidang', 4);
+INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `alamat`, `id_level`) VALUES
+(1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', 'Jl Kenari', 1),
+(2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', 'Sleman', 2),
+(3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', 'lalalalala', 3),
+(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', 'bidang', 4);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `bidang`
+-- Indexes for table `bidang`
 --
 ALTER TABLE `bidang`
   ADD PRIMARY KEY (`id_bidang`);
 
 --
--- Indeks untuk tabel `feedback`
+-- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id_feedback`),
   ADD KEY `id_keluhan` (`id_keluhan`);
 
 --
--- Indeks untuk tabel `keluhan`
+-- Indexes for table `keluhan`
 --
 ALTER TABLE `keluhan`
   ADD PRIMARY KEY (`id_keluhan`),
@@ -150,78 +153,78 @@ ALTER TABLE `keluhan`
   ADD KEY `id_bidang` (`id_bidang`);
 
 --
--- Indeks untuk tabel `level`
+-- Indexes for table `level`
 --
 ALTER TABLE `level`
   ADD PRIMARY KEY (`id_level`),
   ADD KEY `id_bidang` (`id_bidang`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `id_level` (`id_level`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bidang`
+-- AUTO_INCREMENT for table `bidang`
 --
 ALTER TABLE `bidang`
   MODIFY `id_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `feedback`
+-- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
   MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `keluhan`
+-- AUTO_INCREMENT for table `keluhan`
 --
 ALTER TABLE `keluhan`
   MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `level`
+-- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `feedback`
+-- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_keluhan`) REFERENCES `keluhan` (`id_keluhan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `keluhan`
+-- Constraints for table `keluhan`
 --
 ALTER TABLE `keluhan`
   ADD CONSTRAINT `keluhan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `keluhan_ibfk_2` FOREIGN KEY (`id_bidang`) REFERENCES `bidang` (`id_bidang`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `level`
+-- Constraints for table `level`
 --
 ALTER TABLE `level`
   ADD CONSTRAINT `level_ibfk_1` FOREIGN KEY (`id_bidang`) REFERENCES `bidang` (`id_bidang`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_level`) REFERENCES `level` (`id_level`) ON DELETE NO ACTION ON UPDATE NO ACTION;
