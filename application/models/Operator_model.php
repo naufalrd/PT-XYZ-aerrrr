@@ -24,15 +24,15 @@ class Operator_model extends CI_Model
         return $this->db->get()->result_array();
     }
     // bawah
-    public function data_pasien()
-    {
+    
+    public function get_keluhanSelesai(){
         $this->db->select('*');
-        $this->db->from('rekam_medis');
-        $this->db->join('pasien', 'pasien.id_pasien = rekam_medis.id_pasien');
-        $this->db->join('dokter', 'dokter.id_dokter = rekam_medis.id_dokter');
-        $this->db->where('rekam_medis.obat !=', '');
-        $this->db->where('rekam_medis.tensi !=', '');
-        $this->db->order_by('rekam_medis.id_rekammedis', 'asc');
+        $this->db->from('keluhan');
+        $this->db->join('user',"user.id_user = keluhan.id_user");
+        $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
+        $id_bidang = $this->session->userdata('id_bidang');
+        $where = "status='Diteruskan' OR status='Selesai' OR status='Ditinjau' AND status_pesan = ''";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 
@@ -58,6 +58,24 @@ class Operator_model extends CI_Model
         $this->db->select('*');
         $this->db->from('bidang');
         $this->db->where('bidang.id_bidang >=', '2');
+        return $this->db->get()->result_array();
+    }
+
+    public function monitor_feedback($id_keluhan){
+        $this->db->select('*');
+		$this->db->from('feedback');
+        $this->db->join('keluhan', 'feedback.id_keluhan = keluhan.id_keluhan');
+		$this->db->join('user', 'user.id_user = keluhan.id_user');
+        $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
+        $this->db->where('keluhan.id_keluhan', $id_keluhan);
+        $this->db->order_by('feedback.id_feedback', 'asc');
+        return $this->db->get()->result_array();
+    }
+
+    public function monitor_keluhan($id_keluhan){
+        $this->db->select('*');
+		$this->db->from('keluhan');
+        $this->db->where('keluhan.id_keluhan', $id_keluhan);
         return $this->db->get()->result_array();
     }
 

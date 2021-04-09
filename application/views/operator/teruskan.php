@@ -33,4 +33,25 @@
 
         </div>
     </div>
+    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+        <h4 class="text-center mb-5">List Bidang</h4>
+        <table class="table">
+            <thead>
+                <tr class="text-left">
+                    <th scope="col">No</th>
+                        <th scope="col">Nama Bidang</th>
+                        <th scope="col">Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $ni= 1; foreach ($bidang as $data3) :?>
+                    <tr class="text-left">    
+                        <th><?= $ni++?></th>
+                        <td><?= $data3['nama_bidang']?></td>
+                        <td><?= $data3['deskripsi_bidang']?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+        </table>
+    </div>
 </div>

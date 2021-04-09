@@ -16,6 +16,7 @@ class Operator extends CI_Controller
     public function index()
     {
         $data['keluhan'] = $this->operator_model->search_keluhan();
+        $data['selesai'] = $this->operator_model->get_keluhanSelesai();
         $this->load->view('template/header.php');
         $this->load->view('operator/home.php',$data);
         $this->load->view('template/footer.php');
@@ -44,6 +45,15 @@ class Operator extends CI_Controller
 
     public function submit_data(){
         redirect('operator');
+    }
+
+    public function details($id_keluhan)
+    {
+        $data['feedback'] = $this->operator_model->monitor_feedback($id_keluhan);
+        $data['keluhan'] = $this->operator_model->monitor_keluhan($id_keluhan);
+        $this->load->view('template/header.php');
+        $this->load->view('operator/details.php',$data);
+        $this->load->view('template/footer.php');
     }
 
     public function user()
