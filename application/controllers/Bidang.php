@@ -39,7 +39,7 @@ class Bidang extends CI_Controller
     public function details($id_keluhan)
     {
         $data['feedback'] = $this->bidang_model->monitor_feedback($id_keluhan);
-        $data['keluhan'] = $this->bidang_model->monitor_keluhan($id_keluhan);
+        $data['keluhan'] = $this->bidang_model->get_keluhanbyId($id_keluhan);
         $this->load->view('template/header.php');
         $this->load->view('bidang/details.php',$data);
         $this->load->view('template/footer.php');
