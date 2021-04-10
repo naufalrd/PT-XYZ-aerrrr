@@ -7,21 +7,29 @@
                 <div class="row">
                     <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>">
                     <div class="form-group col-6 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Nama Depan</label>
+                        <label for="inputEmail" class="form-controll ">Nama Depan</label>
                         <input type="text" name="nama_depan" value="<?= $data['nama_depan'] ?>" class="form-control shadow-none" placeholder="Nama Depan" required autofocus>
                     </div>
                     <div class="form-group col-6 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Nama Belakang</label>
+                        <label for="inputEmail" class="form-controll ">Nama Belakang</label>
                         <input type="text" name="nama_belakang" value="<?= $data['nama_belakang'] ?>" class="form-control shadow-none" placeholder="Nama Belakang" required>
                     </div>
                     <div class="form-group col-6 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Username</label>
+                        <label for="inputEmail" class="form-controll ">Username</label>
                         <input type="text" name="username" value="<?= $data['username'] ?>" class="form-control" autocomplete="off" placeholder="Username" required>
+                    </div>
+                    <div class="form-group col-6 mb-3">
+                        <label for="inputEmail" class="form-controll">No. HP</label>
+                        <input type="text" name="no_hp" class="form-control shadow-none" placeholder="No. HP" value="<?= $data['no_hp'] ?>" required>
+                    </div>
+                    <div class="form-group col-6 mb-3">
+                        <label for="inputEmail" class="form-controll">E-mail</label>
+                        <input type="text" name="email_user" class="form-control shadow-none" placeholder="E-mail" value="<?= $data['email_user'] ?>" required>
                     </div>
                     <input type="hidden" name="password" value="<?= $data['password'] ?>">
                     
                     <div class="form-group col-6 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Level</label>
+                        <label for="inputEmail" class="form-controll ">Level</label>
                         <select class="form-select" id="validationCustom04" name="id_level" required>
                             <option selected disabled value="">Choose...</option>
                             <?php foreach ($level as $row) :?>
@@ -33,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group col-12 mb-3">
-                        <label for="inputEmail" class="form-controll visually-hidden">Alamat</label>
+                        <label for="inputEmail" class="form-controll ">Alamat</label>
                         <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="<?= $data['alamat'] ?>"><?= $data['alamat'] ?></textarea>
                     </div>
                 </div>

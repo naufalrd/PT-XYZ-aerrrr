@@ -55,18 +55,22 @@ class Auth extends CI_Controller
         } else {
             // data untuk tabel akun
             $username = $this->input->post('username');
+            $email_user = $this->input->post('email_user');
             $level = '1';
             $password = $this->input->post('password');
             $pass = password_hash($password, PASSWORD_DEFAULT);
             $nama_depan = $this->input->post('nama_depan');
             $nama_belakang = $this->input->post('nama_belakang');
+            $no_hp = $this->input->post('no_hp');
             $alamat = $this->input->post('alamat');
             $data = [
+                'email_user' => $email_user,
                 'username' => $username,
                 'id_level' => $level,
                 'password' => $pass,
                 'nama_depan' => $nama_depan,
                 'nama_belakang' => $nama_belakang,
+                'no_hp' => $no_hp,
                 'alamat' => $alamat,
             ];
             $insert = $this->auth_model->register("user", $data);

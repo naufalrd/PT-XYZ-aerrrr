@@ -86,10 +86,12 @@ class Operator_model extends CI_Model
         #$id_dokter = $this -> db -> where('username_dokter',$this->session->userdata('username')) -> get() -> result_array();
 
         $data = array(
+            'email_user' => $this->input->post('email_user'),
             'nama_depan' => $this->input->post('nama_depan'),
             'nama_belakang' => $this->input->post('nama_belakang'),
             'username' => $this->input->post('username'),
             'password' => $this->input->post('password'),
+            'no_hp' => $this->input->post('no_hp'),
             'alamat' => $this->input->post('alamat'),
             'id_level' => $this->input->post('id_level')
         );
@@ -134,10 +136,12 @@ class Operator_model extends CI_Model
         $pass = password_hash($password, PASSWORD_DEFAULT);
 
         $data = array(
+            'email_user' => $this->input->post('email_user'),
             'nama_depan' => $this->input->post('nama_depan'),
             'nama_belakang' => $this->input->post('nama_belakang'),
             'username' => $this->input->post('username'),
             'password' => $pass,
+            'no_hp' => $this->input->post('no_hp'),
             'alamat' => $this->input->post('alamat'),
             'id_level' => $this->input->post('id_level')
         );

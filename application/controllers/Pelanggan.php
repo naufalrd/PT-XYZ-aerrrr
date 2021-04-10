@@ -120,9 +120,14 @@ class Pelanggan extends CI_Controller
     public function update_biodata(){
         $nama_depan = $this->input->post('nama_depan');
         $nama_belakang = $this->input->post('nama_belakang');
+        $email_user = $this->input->post('email_user');
+        $no_hp = $this->input->post('no_hp');
         $alamat = $this->input->post('alamat');
         $data = [
             'nama_depan' => $nama_depan,
+            'nama_belakang' => $nama_belakang,
+            'email_user' => $email_user,
+            'no_hp' => $no_hp,
             'nama_belakang' => $nama_belakang,
             'alamat' => $alamat
         ];

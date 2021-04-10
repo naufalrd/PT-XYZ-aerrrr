@@ -17,23 +17,31 @@
     <form action="<?= site_url(); ?>auth/check_register" method="post">
         <div class="row">
             <div class="form-group col-6 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Nama Depan</label>
+                <label for="inputEmail" class="form-controll ">Nama Depan</label>
                 <input type="text" name="nama_depan" class="form-control shadow-none" placeholder="Nama Depan" required autofocus>
             </div>
             <div class="form-group col-6 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Nama Belakang</label>
+                <label for="inputEmail" class="form-controll ">Nama Belakang</label>
                 <input type="text" name="nama_belakang" class="form-control shadow-none" placeholder="Nama Belakang" required>
             </div>
             <div class="form-group col-6 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Username</label>
+                <label for="inputEmail" class="form-controll">E-mail</label>
+                <input type="text" name="email_user" class="form-control shadow-none" placeholder="E-mail" required>
+            </div>
+            <div class="form-group col-6 mb-3">
+                <label for="inputEmail" class="form-controll ">Username</label>
                 <input type="text" name="username" class="form-control" autocomplete="off" placeholder="Username" required>
             </div>
             <div class="form-group col-6 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Password</label>
+                <label for="inputEmail" class="form-controll ">Password</label>
                 <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Password" required>
             </div>
+            <div class="form-group col-6 mb-3">
+                <label for="inputEmail" class="form-controll">No. HP</label>
+                <input type="text" name="no_hp" class="form-control shadow-none" placeholder="No. HP" required>
+            </div>
             <div class="form-group col-12 mb-3">
-                <label for="inputEmail" class="form-controll visually-hidden">Alamat</label>
+                <label for="inputEmail" class="form-controll ">Alamat</label>
                 <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="alamat"></textarea>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
