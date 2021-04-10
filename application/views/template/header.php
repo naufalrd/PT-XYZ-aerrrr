@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>/assets/vendor/bs5-beta/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>/assets/css/dashboard.css">
+    <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>/assets/css/direktur.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link type="text/css" href="<?= base_url(); ?>/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/vendor/chartist/dist/chartist.min.css">
