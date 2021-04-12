@@ -1,7 +1,7 @@
 <div class="container mb-container">
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center mb-5">Edit User</h1>
-        <div class="container text-center overflow-auto">
+        <div class="container text-start overflow-auto">
         <?php foreach ($user as $data) : ?>
             <form action="<?= site_url(); ?>operator/edit_user/<?= $data['id_user'] ?>" method="post">
                 <div class="row">

@@ -18,7 +18,7 @@ class Pelanggan_model extends CI_Model{
     public function get_keluhan(){
         $this->db->from('keluhan');
         $id_user = $this->session->userdata('id_user');
-        $where = "id_user='$id_user' AND (status = '' OR status = 'Ditinjau')";
+        $where = "id_user='$id_user' AND (status = '' OR status = 'Ditinjau' OR status ='Diteruskan')";
         $this->db->where($where);
         return $this->db->get()->result_array();
     }

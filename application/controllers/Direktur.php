@@ -15,6 +15,10 @@ class Direktur extends CI_Controller
 
     public function index()
     {
+        $data['JaminanKualitas'] = $this->direktur_model->search_jaminankeluhan();
+        $data['Pembelian'] = $this->direktur_model->search_pembelian();
+        $data['Distribusi'] = $this->direktur_model->search_distribusi();
+        
         $data['keluhan'] = $this->direktur_model->search_keluhan();
         #$data['keluhan_selesai'] = $this->direktur_model->keluhan_selesai();
         $data['selesai'] = $this->direktur_model->search_selesai();

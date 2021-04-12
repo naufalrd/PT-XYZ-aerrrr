@@ -15,24 +15,19 @@ class Direktur_model extends CI_Model{
     public function search_selesai(){
         $this->db->select('*');
 		$this->db->from('keluhan');
-		$this->db->join('user', 'user.id_user = keluhan.id_user');
+        $this->db->join('user', 'user.id_user = keluhan.id_user');
         $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.status !=', 'Ditolak');
-        $this->db->where('keluhan.status !=', '');
         $this->db->where('keluhan.status', 'Selesai');
-        $this->db->order_by('keluhan.tanggal_keluhan', 'asc');
         return $this->db->get()->result_array();
     }
 
     public function search_diteruskan(){
         $this->db->select('*');
 		$this->db->from('keluhan');
-		$this->db->join('user', 'user.id_user = keluhan.id_user');
+        $this->db->join('user', 'user.id_user = keluhan.id_user');
         $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.status !=', 'Ditolak');
-        $this->db->where('keluhan.status !=', '');
-        $this->db->where('keluhan.status', 'Diteruskan');
-        $this->db->order_by('keluhan.tanggal_keluhan', 'asc');
+        $where = "status='Diteruskan' OR status='Ditinjau' ";
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 
@@ -58,6 +53,25 @@ class Direktur_model extends CI_Model{
         $this->db->select('*');
 		$this->db->from('keluhan');
         $this->db->where('status', 'Selesai');
+        return $this->db->get()->result_array();
+    }
+
+    public function search_jaminankeluhan(){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->where('id_bidang','2');
+        return $this->db->get()->result_array();
+    }
+    public function search_pembelian(){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->where('id_bidang','3');
+        return $this->db->get()->result_array();
+    }
+    public function search_distribusi(){
+        $this->db->select('*');
+        $this->db->from('keluhan');
+        $this->db->where('id_bidang','4');
         return $this->db->get()->result_array();
     }
 }
