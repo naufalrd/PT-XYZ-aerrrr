@@ -108,11 +108,11 @@
                         <td><?= $data3['nama_depan']." ".$data3['nama_belakang']?></td>
                         <td><?= $data3['judul']?></td>
                         <td><?= date_indo($data3['tanggal_keluhan'])?></td>
-                        <td><?= $lamaWaktu[$d++] . ' hari' ?></td>
+                        <td><?= $lamaWaktu[$d] . ' hari' ?></td>
                         <td><?= $data3['status']?></td>
                         <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>
-                <?php endforeach ?>
+                <?php $d++; endforeach ?>
                 </tbody>
             </table>
         </div>
