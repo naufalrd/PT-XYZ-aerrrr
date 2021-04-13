@@ -110,4 +110,13 @@ class Bidang_model extends CI_Model
         $this->db->where('keluhan.id_keluhan', $id_keluhan);
         return $this->db->get()->result_array();
     }
+
+    public function ambildata($id_keluhan){
+        $this->db->select('*');
+		$this->db->from('keluhan');
+		$this->db->join('user', 'user.id_user = keluhan.id_user');
+        $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
+        $this->db->where('keluhan.id_keluhan', $id_keluhan);
+        return $this->db->get()->result_array()['0'];
+    }
 }

@@ -180,7 +180,7 @@
         data: {
             labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
             datasets: [{
-                label: 'Rating Ulasan Pelanggan',
+                label: 'haiii',
                 data: [<?= $RatingJaminanKualitas->jumlah/count($JaminanKualitas).','.$RatingPembelian->jumlah/(count($Pembelian)!=0 ? count($Pembelian) : '1').','.$RatingDistribusi->jumlah/(count($Distribusi)!=0 ? count($Distribusi) : '1') ?>],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
