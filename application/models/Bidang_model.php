@@ -3,14 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Bidang_model extends CI_Model
 {
-    //ambil id bidang
-    public function get_bidangId(){
-        $this->db->select('id_bidang');
-        $this->db->from('level');
-        $this->db->where('id_level', $this->session->userdata('level'));
-        return $this->db->get()->result();
-    }
-
     //home atas
     public function get_keluhan(){
         $this->db->select('*');
