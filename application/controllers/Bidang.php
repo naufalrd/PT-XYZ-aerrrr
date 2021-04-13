@@ -22,6 +22,7 @@ class Bidang extends CI_Controller
         $data['keluhan'] = $this->bidang_model->get_keluhan();
         $data['tinjauan'] = $this->bidang_model->get_tinjauan();
         $data['selesai'] = $this->bidang_model->get_keluhanSelesai();
+        $data['penanganan'] = $this->bidang_model->get_time();
         $this->load->view('template/header.php');
         $this->load->view('bidang/home.php',$data);
         $this->load->view('template/footer.php');

@@ -42,7 +42,17 @@ class Bidang_model extends CI_Model
         $this->db->join('user',"user.id_user = keluhan.id_user");
         $this->db->join('bidang',' bidang.id_bidang = keluhan.id_bidang');
         $id_bidang = $this->session->userdata('id_bidang');
-        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai' OR status='Ditinjau') AND status_pesan = ''";
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai') AND status_pesan = ''";
+        $this->db->where($where);
+        return $this->db->get()->result_array();
+    }
+
+    public function get_time(){
+        $this->db->select('keluhan.id_keluhan,tanggal_keluhan,feedback.id_keluhan, tanggal_respon');
+        $this->db->from('keluhan');
+        $this->db->join('feedback','feedback.id_keluhan = keluhan.id_keluhan');
+        $id_bidang = $this->session->userdata('id_bidang');
+        $where = "keluhan.id_bidang='$id_bidang' AND (status='Selesai') ";
         $this->db->where($where);
         return $this->db->get()->result_array();
     }

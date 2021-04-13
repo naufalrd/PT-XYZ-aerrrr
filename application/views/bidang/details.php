@@ -20,28 +20,48 @@
         <?php endforeach ?>
     </div>
 
+    <!-- menghitung lama keluhan ditangani -->
+    <?php 
+        $tanggalKeluh = new DateTime($keluhan[0]['tanggal_keluhan']);
+        $tanggalRespon = new DateTime($feedback[count($feedback)-1]['tanggal_respon']);
+        $lamaPenangan = $tanggalRespon->diff($tanggalKeluh)->days + 1 ;
+    ?>
     <div class="row mt-5 mb-2 mx-5 p-5 shadow bg-white rounded">
-    <h1 class="text-center">Detail Identitas Pengeluh</h1>
+    <h1 class="text-center">Detail Keluhan</h1>
         <div class="container mb-2 overflow-auto">
         <table class="table table-borderless mt-3" >
-             <tr>
-                <th>Username</th>
+            <tr>
+                <th>Status Keluhan</th>
+                <td><?= $keluhan[0]['status'] ?></td>
+            </tr>
+            <?php if($keluhan[0]['status'] == 'Selesai') {?> 
+                <tr>
+                    <th>Lama Keluhan ditangani</th>
+                    <td><?= $lamaPenangan . ' hari' ?></td>
+                </tr>
+                <tr>
+                    <th>Rating Penanganan</th>
+                    <td><?= $keluhan[0]['rating'] ?></td>
+                </tr>
+            <?php }; ?>
+            <tr>
+                <th>Username Pelanggan</th>
                 <td><?= $keluhan[0]['username'] ?></td>
             </tr>
             <tr>
-                <th>Nama Lengkap</th>
+                <th>Nama Lengkap Pelanggan</th>
                 <td><?= $keluhan[0]['nama_depan'] ?> <?= $keluhan[0]['nama_belakang'] ?></td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>Email Pelanggan</th>
                 <td><?= $keluhan[0]['email_user'] ?></td>
             </tr>
             <tr>
-                <th>No Hp</th>
+                <th>No Hp Pelanggan</th>
                 <td><?= $keluhan[0]['no_hp'] ?></td>
             </tr>
             <tr>
-                <th>Alamat</th>
+                <th>Alamat Pelanggan</th>
                 <td><?= $keluhan[0]['alamat'] ?></td>
             </tr>
         </table>
