@@ -152,4 +152,17 @@ class Operator_model extends CI_Model
     {
         $this->db->where('id_user', $id)->delete('user');
     }
+
+    public function search_idbidang($id)
+    {
+        $this->db->select('*');
+        $this->db->from('bidang');
+        $this->db->join('level', 'level.id_bidang = bidang.id_bidang');
+        return $this->db->where('bidang.id_bidang', $id)->get()->result_array();
+    }
+
+    public function delete_bidang($id)
+    {
+        $this->db->where('id_bidang', $id)->delete('bidang');
+    }
 }

@@ -59,6 +59,7 @@ class Operator extends CI_Controller
     public function user()
     {
         $data['user'] = $this->operator_model->search_user();
+        $data['bidang'] = $this->operator_model->search_bidang();
         $this->load->view('template/header.php');
         $this->load->view('operator/user/home.php',$data);
         $this->load->view('template/footer.php');
@@ -111,6 +112,26 @@ class Operator extends CI_Controller
 
     public function delete_user($id){
         $this->operator_model->delete_user($id);
+        redirect('operator/user');
+    }
+
+    public function add_bidang(){
+        $data['level'] = $this->operator_model->search_level();
+        $this->load->view('template/header.php');
+        $this->load->view('operator/user/add_bidang.php',$data);
+        $this->load->view('template/footer.php');
+    }
+
+    public function edit_bidang($id){
+        $data['bidang'] = $this->operator_model->search_idbidang($id);
+        $data['level'] = $this->operator_model->search_level();
+        $this->load->view('template/header.php');
+        $this->load->view('operator/user/edit_bidang.php',$data);
+        $this->load->view('template/footer.php');
+    }
+
+    public function delete_bidang($id){
+        $this->operator_model->delete_bidang($id);
         redirect('operator/user');
     }
 }
