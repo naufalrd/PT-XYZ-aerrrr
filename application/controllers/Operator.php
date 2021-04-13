@@ -130,8 +130,74 @@ class Operator extends CI_Controller
         $this->load->view('template/footer.php');
     }
 
+    public function submit_bidang(){
+        $this->load->library('form_validation');
+        $this->load->library('session');
+
+        $this->form_validation->set_rules('nama_bidang', 'Nama Bidang', 'required|min_length[5]|is_unique[bidang.nama_bidang]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $errors = $this->form_validation->error_array();
+            
+            $this->session->set_flashdata('errors', $errors);
+            $this->session->set_flashdata('input', $this->input->post());
+            redirect('operator/add_bidang');
+        } else {
+
+            $nama_bidang = $this->input->post('nama_bidang');
+            $deskripsi_bidang =  $this->input->post('deskripsi_bidang');
+            $data = [
+                'nama_bidang' => $nama_bidang,
+                'deskripsi_bidang' => $deskripsi_bidang
+            ];
+            $insert = $this->operator_model->insertBidang("bidang", $data);
+            $idBidang = $this->operator_model->get_last_idBidang()['id_bidang'];
+            $data2 = [
+                'nama_level' => 'bidang',
+                'id_bidang' => $idBidang
+            ];
+            $insert2 = $this->operator_model->insertBidang("level", $data2);
+            if ($insert2) {
+                echo '<script>alert("Sukses! Anda berhasil menambahkan bidang baru");window.location.href="' . base_url('index.php/operator/user') . '";</script>';
+            }
+        }
+        redirect('operator/user');
+    }
+
+    public function submit_editbidang(){
+        $this->load->library('form_validation');
+        $this->load->library('session');
+
+        $this->form_validation->set_rules('nama_bidang', 'Nama Bidang', 'required|min_length[5]');
+        $this->form_validation->set_rules('deskripsi_bidang', 'Deskripsi Bidang', 'required|min_length[5]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $errors = $this->form_validation->error_array();
+            
+            $this->session->set_flashdata('errors', $errors);
+            $this->session->set_flashdata('input', $this->input->post());
+            redirect('operator/edit_bidang');
+        } else {
+            $id_bidang = $this->input->post('id_bidang');
+            $nama_bidang = $this->input->post('nama_bidang');
+            $deskripsi_bidang =  $this->input->post('deskripsi_bidang');
+            $data = [
+                'nama_bidang' => $nama_bidang,
+                'deskripsi_bidang' => $deskripsi_bidang
+            ];
+            $editBidang = $this->operator_model->update_bidang($id_bidang, $data);
+            if ($editBidang) {
+                echo '<script>alert("Sukses! Anda berhasil melakukan Update Bidang");window.location.href="' . base_url('index.php/operator/user') . '";</script>';
+            }
+        }
+        redirect('operator/user');
+    }
+
     public function delete_bidang($id){
-        $this->operator_model->delete_bidang($id);
+        $delete = $this->operator_model->delete_bidang($id);
+        if ($delete) {
+            echo '<script>alert("Sukses! Anda berhasil menghapus Bidang");window.location.href="' . base_url('index.php/operator/user') . '";</script>';
+        }
         redirect('operator/user');
     }
 }

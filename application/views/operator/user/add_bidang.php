@@ -16,7 +16,7 @@
     <?php } ?>
         <h1 class="text-center mb-5">Add Bidang</h1>
         <div class="container text-start overflow-auto">
-            <form action="<?= site_url(); ?>operator/add_user" method="post">
+            <form action="<?= site_url(); ?>operator/submit_bidang" method="post">
                 <div class="row">
                     <div class="form-group col-6 mb-3">
                         <label for="inputEmail" class="form-controll">Nama Bidang</label>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group col-12 mb-3">
                         <label for="inputEmail" class="form-controll">Deskripsi Tugas</label>
-                        <textarea type="text" name="deskripsi_bidang" class="form-control" autocomplete="off" placeholder="Tulis Deskripsi..."></textarea>
+                        <textarea name="deskripsi_bidang" class="form-control" autocomplete="off" placeholder="Tulis Deskripsi..." required></textarea>
                     </div>
                 </div>
                 <button class="btn btn-lg btn-primary" type="submit">Add Bidang</button>

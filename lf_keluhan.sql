@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2021 at 11:41 AM
+-- Generation Time: Apr 13, 2021 at 07:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -41,7 +41,8 @@ INSERT INTO `bidang` (`id_bidang`, `nama_bidang`, `deskripsi_bidang`) VALUES
 (1, 'Non Bidang', 'bagian selain bidang'),
 (2, 'Jaminan Kualitas', 'devisi yang bertanggung jawab terhadap kualitas produk'),
 (3, 'Pembelian', 'devisi yang bertanggung jawab terhadap standar harga produk'),
-(4, 'Distribusi', 'devisi yang bertanggung jawab terhadap distribusi produk');
+(4, 'Distribusi', 'devisi yang bertanggung jawab terhadap distribusi produk'),
+(6, 'Desain', 'Bertanggun jawab dalam desain produk jadi');
 
 -- --------------------------------------------------------
 
@@ -63,10 +64,8 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id_feedback`, `feedback`, `respon`, `tanggal_feedback`, `tanggal_respon`, `id_keluhan`) VALUES
-(7, '<p>kok cuma ok ditinjau lah<br></p>', '<p>ok<br></p>', '0000-00-00', '2021-04-09', 1),
-(8, 'Baik,terima kasih saya sudah puas :)', '<p>ok sudah kami tangani</p>', '0000-00-00', '2021-04-13', 1),
-(9, 'Baik,terima kasih saya sudah puas :)', '<p>yup ntaps</p>', '0000-00-00', '2021-04-13', 2),
-(10, 'Baik, terimakasih !', '<p>ok akan kami ganti dengan yang baru, mohon untuk membiarkan galon tetap isi agar bisa kami dokumentasikan</p>', '0000-00-00', '2021-04-13', 3);
+(1, 'Baik, terimakasih !', '<p>aaa<br></p>', '0000-00-00', '2021-04-13', 6),
+(2, 'Baik, terimakasih !', '<p>wet<br></p>', '0000-00-00', '2021-04-14', 7);
 
 -- --------------------------------------------------------
 
@@ -92,11 +91,8 @@ CREATE TABLE `keluhan` (
 --
 
 INSERT INTO `keluhan` (`id_keluhan`, `id_user`, `judul`, `keluhan`, `tanggal_keluhan`, `status`, `status_pesan`, `id_bidang`, `rating`, `rating_desc`) VALUES
-(1, 1, 'Air Bau G enak', '<p>Airnya kok bau g enak ya mas<br></p>', '2021-04-09', 'Selesai', '', 2, 5, ''),
-(2, 1, 'Coba lagi hayo', '<p>aaa</p>', '2021-04-13', 'Selesai', '', 2, 3, ''),
-(3, 1, 'Air Kotor', '<p>Air galon ada kotorannya</p>', '2021-04-13', 'Selesai', '', 2, 3, 'mantap mas, respon cepat baru chat dah langsung di bales uwu bener\r\n'),
-(4, 1, 'coba dlu ', '<p>aaa</p>', '2021-04-13', 'Selesai', '', 3, 3, ''),
-(5, 1, 'coba lagi', '<p>hehe</p>', '2021-04-13', 'Selesai', '', 4, 2, '');
+(6, 1, 'coba ', '<p>coba eror g<br></p>', '2021-04-13', 'Selesai', '', 4, 4, 'hehe'),
+(7, 1, 'coba lagi', '<p>aaaaa<br></p>', '2021-04-14', 'Selesai', '', 6, 5, 'aa');
 
 -- --------------------------------------------------------
 
@@ -120,7 +116,8 @@ INSERT INTO `level` (`id_level`, `nama_level`, `id_bidang`) VALUES
 (3, 'direktur', 1),
 (4, 'bidang', 2),
 (5, 'bidang', 3),
-(6, 'bidang', 4);
+(6, 'bidang', 4),
+(7, 'bidang', 6);
 
 -- --------------------------------------------------------
 
@@ -148,7 +145,9 @@ INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `use
 (1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', '085544123900', 'Jl Kenari', 1),
 (2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', '085544123901', 'Sleman', 2),
 (3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', '085544123902', 'lalalalala', 3),
-(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', '085544123903', 'bidang', 4);
+(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', '085544123903', 'bidang', 4),
+(10, 'distribusi@gmail.com', 'bang', 'distribusi', 'distribusi', '$2y$10$tbCGXCktWaZNLhiwOnmDnOUNttobxD2tsT/OjlL4P0rOrFi5XlhJC', '008', 'distribusi', 6),
+(11, 'desain@gmail.com', 'desain', 'desain', 'desain', '$2y$10$BTJMg068Rc7VbH255PBOWOM6KA4jkmTLpfvgdLc2uDVdcFym4mxfa', '099', 'desain', 7);
 
 --
 -- Indexes for dumped tables
@@ -197,31 +196,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bidang`
 --
 ALTER TABLE `bidang`
-  MODIFY `id_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `keluhan`
 --
 ALTER TABLE `keluhan`
-  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
