@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2021 at 10:17 AM
+-- Generation Time: Apr 13, 2021 at 11:41 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -58,6 +58,16 @@ CREATE TABLE `feedback` (
   `id_keluhan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id_feedback`, `feedback`, `respon`, `tanggal_feedback`, `tanggal_respon`, `id_keluhan`) VALUES
+(7, '<p>kok cuma ok ditinjau lah<br></p>', '<p>ok<br></p>', '0000-00-00', '2021-04-09', 1),
+(8, 'Baik,terima kasih saya sudah puas :)', '<p>ok sudah kami tangani</p>', '0000-00-00', '2021-04-13', 1),
+(9, 'Baik,terima kasih saya sudah puas :)', '<p>yup ntaps</p>', '0000-00-00', '2021-04-13', 2),
+(10, 'Baik, terimakasih !', '<p>ok akan kami ganti dengan yang baru, mohon untuk membiarkan galon tetap isi agar bisa kami dokumentasikan</p>', '0000-00-00', '2021-04-13', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -73,8 +83,20 @@ CREATE TABLE `keluhan` (
   `status` varchar(50) NOT NULL,
   `status_pesan` varchar(255) NOT NULL,
   `id_bidang` int(11) DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL
+  `rating` int(11) DEFAULT NULL,
+  `rating_desc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keluhan`
+--
+
+INSERT INTO `keluhan` (`id_keluhan`, `id_user`, `judul`, `keluhan`, `tanggal_keluhan`, `status`, `status_pesan`, `id_bidang`, `rating`, `rating_desc`) VALUES
+(1, 1, 'Air Bau G enak', '<p>Airnya kok bau g enak ya mas<br></p>', '2021-04-09', 'Selesai', '', 2, 5, ''),
+(2, 1, 'Coba lagi hayo', '<p>aaa</p>', '2021-04-13', 'Selesai', '', 2, 3, ''),
+(3, 1, 'Air Kotor', '<p>Air galon ada kotorannya</p>', '2021-04-13', 'Selesai', '', 2, 3, 'mantap mas, respon cepat baru chat dah langsung di bales uwu bener\r\n'),
+(4, 1, 'coba dlu ', '<p>aaa</p>', '2021-04-13', 'Selesai', '', 3, 3, ''),
+(5, 1, 'coba lagi', '<p>hehe</p>', '2021-04-13', 'Selesai', '', 4, 2, '');
 
 -- --------------------------------------------------------
 
@@ -113,6 +135,7 @@ CREATE TABLE `user` (
   `nama_belakang` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `no_hp` varchar(14) NOT NULL,
   `alamat` text NOT NULL,
   `id_level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -121,11 +144,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `alamat`, `id_level`) VALUES
-(1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', 'Jl Kenari', 1),
-(2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', 'Sleman', 2),
-(3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', 'lalalalala', 3),
-(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', 'bidang', 4);
+INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `no_hp`, `alamat`, `id_level`) VALUES
+(1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', '085544123900', 'Jl Kenari', 1),
+(2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', '085544123901', 'Sleman', 2),
+(3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', '085544123902', 'lalalalala', 3),
+(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', '085544123903', 'bidang', 4);
 
 --
 -- Indexes for dumped tables
@@ -180,13 +203,13 @@ ALTER TABLE `bidang`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `keluhan`
 --
 ALTER TABLE `keluhan`
-  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `level`
