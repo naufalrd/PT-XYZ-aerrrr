@@ -8,12 +8,8 @@ class Bidang extends CI_Controller
     {
         parent::__construct();
         $this->load->model('bidang_model');
-        if ($this->session->userdata('level') != '4') {
-            if ($this->session->userdata('level') != '5') {
-                if ($this->session->userdata('level') != '6') {
-                    redirect('auth/check_level');
-                }
-            }
+        if ($this->session->userdata('level') < '4') {
+            redirect('auth/check_level');
         }
     }
 

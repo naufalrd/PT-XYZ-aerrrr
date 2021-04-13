@@ -64,7 +64,7 @@
 
     <!-- menghitung waktu penanganan tiap keluhan -->
     <?php 
-    if($penanganan[0] != NULL){
+    if(!empty($penanganan)){
         $lamaPenanganan[0] = $penanganan[0];
         $a = 0; 
         for($i=0; $i < count($penanganan); $i++) {
@@ -86,7 +86,7 @@
     }
     ?>
 
-    <div class="<?= !isset($selesai[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="<?= empty($selesai[0]['id_keluhan']) ? 'd-none' : ''  ;?> row mt-5 mx-5 p-5 shadow bg-white rounded">
         <h1 class="text-center">Riwayat Keluhan</h1>
         <div class="container text-center overflow-auto">
             <table class="table">
@@ -108,11 +108,11 @@
                         <td><?= $data3['nama_depan']." ".$data3['nama_belakang']?></td>
                         <td><?= $data3['judul']?></td>
                         <td><?= date_indo($data3['tanggal_keluhan'])?></td>
-                        <td><?= $lamaWaktu[$d++] . ' hari' ?></td>
+                        <td><?= $lamaWaktu[$d] . ' hari' ?></td>
                         <td><?= $data3['status']?></td>
                         <td><a href="<?= site_url(); ?>bidang/details/<?= $data3['id_keluhan'] ?>" class="btn btn-sm <?= $data3['status'] == 'Ditinjau' ? 'btn-primary' : 'btn-success' ;?>"><i class="bx bx-message-<?= $data3['status'] == 'Ditinjau' ? 'error' : 'check' ;?>"></i> Detail</a></td>
                     </tr>
-                <?php endforeach ?>
+                <?php $d++; endforeach ?>
                 </tbody>
             </table>
         </div>

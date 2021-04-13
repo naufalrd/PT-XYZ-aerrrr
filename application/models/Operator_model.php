@@ -163,6 +163,23 @@ class Operator_model extends CI_Model
 
     public function delete_bidang($id)
     {
+        $this->db->where('id_bidang', $id)->delete('level');
         $this->db->where('id_bidang', $id)->delete('bidang');
+    }
+
+    public function insertBidang($table, $data)
+    {
+        return $this->db->insert($table, $data);
+    }
+
+    public function get_last_idBidang(){
+        $this->db->select_max('id_bidang');
+        $this->db->from('bidang');
+        return $this->db->get()->result_array()[0];
+    }
+
+    public function update_bidang($id_bidang, $data)
+    {
+        $this->db->where('id_bidang', $id_bidang)->update('bidang', $data);
     }
 }

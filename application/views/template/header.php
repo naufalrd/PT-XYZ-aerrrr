@@ -51,16 +51,9 @@
                     </li>
 
                     <!-- Bidang -->
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != '4' ? ' d-none' : ''; ?>">
+                    <li class="nav-item p-1<?= $this->session->userdata('level') < '4' ? ' d-none' : ''; ?>">
                         <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
-                    </li>
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != '5' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
-                    </li>
-                    <li class="nav-item p-1<?= $this->session->userdata('level') != '6' ? ' d-none' : ''; ?>">
-                        <a class="<?= $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == '' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'details' || $this->uri->segment(1) == 'bidang' && $this->uri->segment(2) == 'tanggapi' ? 'active' : '' ?> nav-link px-4 py-2 rounded-3 text-default" aria-current="page" href="<?= site_url(); ?>bidang"><span class="bx bx-message-detail">&nbsp;&nbsp;</span> Keluhan</a>
-                    </li>
-                    
+                    </li>                    
                 </ul>
             </div>
             <!-- End of Sidebar -->

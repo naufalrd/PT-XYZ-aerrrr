@@ -121,11 +121,7 @@ class Auth extends CI_Controller
                         redirect('/operator');
                     } else if ($this->session->userdata('level') == '3') {
                         redirect('/direktur');
-                    } else if ($this->session->userdata('level') == '4') {
-                        redirect('/bidang');
-                    } else if ($this->session->userdata('level') == '5') {
-                        redirect('/bidang');
-                    } else if ($this->session->userdata('level') == '6') {
+                    } else if ($this->session->userdata('level') >= '4') {
                         redirect('/bidang');
                     }
                 } else {
@@ -149,14 +145,10 @@ class Auth extends CI_Controller
                 redirect('/operator');
             } else if ($this->session->userdata('level') == '3') {
                 redirect('/direktur');
-            } else if ($this->session->userdata('level') == '4') {
+            } else if ($this->session->userdata('level') >= '4') {
                 // var_dump($this->auth_model->cek_bidang($this->session->userdata('id_user')));
                 redirect('/bidang');
-            } else if ($this->session->userdata('level') == '5') {
-                redirect('/bidang');
-            } else if ($this->session->userdata('level') == '6') {
-                redirect('/bidang');
-            }
+            } 
         } else {
             redirect('auth/login');
         }

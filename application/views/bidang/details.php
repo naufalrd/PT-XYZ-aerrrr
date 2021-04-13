@@ -22,9 +22,11 @@
 
     <!-- menghitung lama keluhan ditangani -->
     <?php 
-        $tanggalKeluh = new DateTime($keluhan[0]['tanggal_keluhan']);
-        $tanggalRespon = new DateTime($feedback[count($feedback)-1]['tanggal_respon']);
-        $lamaPenangan = $tanggalRespon->diff($tanggalKeluh)->days + 1 ;
+        if (!empty($feedback)) {
+            $tanggalKeluh = new DateTime($keluhan[0]['tanggal_keluhan']);
+            $tanggalRespon = new DateTime($feedback[count($feedback)-1]['tanggal_respon']);
+            $lamaPenangan = $tanggalRespon->diff($tanggalKeluh)->days + 1 ;
+        }
     ?>
     <div class="row mt-5 mb-2 mx-5 p-5 shadow bg-white rounded">
     <h1 class="text-center">Detail Keluhan</h1>
