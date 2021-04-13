@@ -21,7 +21,21 @@
                         <th><?= $no++ ?></th>
                         <td><?= $a['judul']?></td>
                         <td><?= date_indo($a['tanggal_keluhan'])?></td>
-                        <td><a href="<?= site_url() ;?>pelanggan/details/<?= $a['id_keluhan']?>" class="btn btn-sm <?php if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'btn-primary';}else if($a['status']=='Ditolak'){echo 'btn-danger';} else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan'){echo 'btn-success';} else {echo 'btn-success';};?>"><i class="bx <?php if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'bx-message-error';}else if($a['status']=='Ditolak'){echo 'bx-message-error';} else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan') {echo 'bx-message-x';} else {echo 'bx-message-x';};?>"></i> <?php if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'Balas';}else if($a['status']=='Ditolak'){echo 'Benahi';} else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan') {echo 'Tunggu';} else {echo 'Tunggu';};?></a></td>
+                        <td><a href="<?= site_url() ;?>pelanggan/details/<?= $a['id_keluhan']?>" class="btn btn-sm 
+                            <?php if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'btn-primary';}
+                            else if($a['status']=='Ditolak'){echo 'btn-danger';} 
+                            else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan'){echo 'btn-success';} 
+                            else {echo 'btn-success';};?>">
+                            <i class="bx <?php 
+                                if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'bx-message-error';}
+                                else if($a['status']=='Ditolak'){echo 'bx-message-error';} 
+                                else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan') {echo 'bx-message-x';} 
+                                else {echo 'bx-message-x';};?>">
+                            </i> <?php if($a['status']=='Ditinjau' && $a['status_pesan']=='bidang'){echo 'Balas';}
+                            else if($a['status']=='Ditolak'){echo 'Benahi';} 
+                            else if($a['status']=='Ditinjau' && $a['status_pesan']=='pelanggan') {echo 'Tunggu';} 
+                            else {echo 'Tunggu';};?></a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

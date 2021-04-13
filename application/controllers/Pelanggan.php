@@ -86,35 +86,29 @@ class Pelanggan extends CI_Controller
         redirect('pelanggan/details/'.$idkeluhan);
     }
 
-    public function selesai($id,$id2){
+    public function selesai($keluhan,$feedback){
         //ini buat tabel keluhan
         $where=[
-            'id_keluhan'=>$id
+            'id_keluhan'=>$keluhan
         ];
         $data=[
-            'status'=> "Selesai"
+            'status'=> "Selesai",
+            'rating'=> $this->input->post('rating'),
+            'rating_desc'=> $this->input->post('rating_desc'),
+            'status_pesan'=> ''
         ];
         $table='keluhan';
         //ini buat tabel feedback
         $where2=[
-            'id_feedback'=>$id2
+            'id_feedback'=>$feedback
         ];
         $data2=[
-            'feedback'=>"Baik,terima kasih saya sudah puas :)"
+            'feedback'=>"Baik, terimakasih !"
         ];
         $table2='feedback';
-        //ini buat tabel status pesan
-        $where3=[
-            'id_keluhan'=>$id
-        ];
-        $data3=[
-            'status_pesan'=>""
-        ];
-        $table3='keluhan';
         $this->pelanggan_model->update_data($where,$data,$table);
         $this->pelanggan_model->update_data($where2,$data2,$table2);
-        $this->pelanggan_model->update_data($where3,$data3,$table3);
-        redirect('pelanggan/details/'.$id);
+        redirect('pelanggan/details/'.$keluhan);
     }
   
     public function update_biodata(){
