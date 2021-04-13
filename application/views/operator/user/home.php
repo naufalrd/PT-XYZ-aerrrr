@@ -33,4 +33,34 @@
             </table>
         </div>
     </div>
+    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+        <h1 class="text-center">Tambah Bidang Perusahaan</h1>
+        <p class="text-center mb-5">
+            <a href="<?= site_url(); ?>operator/add_bidang" class="btn btn-sm btn-outline-dark"> + Bidang</a>
+        </p>
+        <div class="container text-center overflow-auto">
+
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Bidang</th>
+                        <th scope="col">Deskripsi Tugas</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no=1;
+                    foreach ($bidang as $data) :?>
+                    <tr class="text-center">
+                        <th><?= $no++ ?></th>
+                        <td><?= $data['nama_bidang']?></td>
+                        <td><?= $data['deskripsi_bidang']?></td>
+                        <td><a href="<?= site_url(); ?>operator/edit_bidang/<?= $data['id_bidang'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-edit"></i> Edit</a>  <a href="<?= site_url(); ?>operator/delete_bidang/<?= $data['id_bidang'] ?>" class="btn btn-sm btn-danger"><i class="bx bx-delete"></i> Delete</a></td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
