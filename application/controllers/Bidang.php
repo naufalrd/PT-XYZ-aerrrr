@@ -88,10 +88,8 @@ class Bidang extends CI_Controller
         $this->load->helper('date');
         date_default_timezone_set('Asia/Jakarta');
         $now = date('Y-m-d');
-        $keluhan = $this->bidang_model->ambildata('1');
-        var_dump($keluhan);
+        $keluhan = $this->bidang_model->ambildata($id_keluhan);
         $data = `Hai, ` . $keluhan['nama_depan'] . " " . $keluhan['nama_belakang'] . "</br>Keluhanmu Dengan Judul " . $keluhan['judul'] . " Telah dibalas oleh " . $keluhan['nama_bidang'] . " Pada Tanggal " . date_indo($now). " Silahkan anda buka websitenya atau silahkan pergi ke halaman <a href='".site_url()."pelanggan/details/".$keluhan['id_keluhan']."'>berikut ini</a>";
-        echo $data;
         $this->kirimemail($keluhan['email_user'], $data);
     }
 
@@ -132,8 +130,10 @@ class Bidang extends CI_Controller
         // Tampilkan pesan sukses atau error
         if ($this->email->send()) {
             echo 'Sukses! email berhasil dikirim.';
+            redirect('bidang');
         } else {
             echo 'Error! email tidak dapat dikirim.';
+            redirect('bidang');
         }
     }
 }
