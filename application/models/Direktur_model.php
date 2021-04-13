@@ -5,9 +5,8 @@ class Direktur_model extends CI_Model{
 		$this->db->from('keluhan');
 		$this->db->join('user', 'user.id_user = keluhan.id_user');
         $this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.status !=', 'Ditolak');
-        $this->db->where('keluhan.status !=', '');
-        $this->db->where('keluhan.status', 'Ditinjau');
+        $where = "keluhan.status = 'Ditinjau' OR keluhan.status ='Selesai'";
+        $this->db->where($where);
         $this->db->order_by('keluhan.tanggal_keluhan', 'asc');
         return $this->db->get()->result_array();
     }
@@ -60,18 +59,28 @@ class Direktur_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('keluhan');
         $this->db->where('id_bidang','2');
+        $this->db->where('rating !=',NULL);
         return $this->db->get()->result_array();
     }
     public function search_pembelian(){
         $this->db->select('*');
         $this->db->from('keluhan');
         $this->db->where('id_bidang','3');
+        $this->db->where('rating !=',NULL);
         return $this->db->get()->result_array();
     }
     public function search_distribusi(){
         $this->db->select('*');
         $this->db->from('keluhan');
         $this->db->where('id_bidang','4');
+        $this->db->where('rating !=',NULL);
         return $this->db->get()->result_array();
+    }
+
+    public function jumlahRating($bidang){
+        $this->db->select('SUM(rating) as jumlah');
+        $this->db->from('keluhan');
+        $this->db->where('id_bidang',$bidang);
+        return $this->db->get()->row();
     }
 }
