@@ -47,7 +47,7 @@
     <h1 class="text-center">Detail Identitas Pengeluh</h1>
         <div class="container mb-2 overflow-auto">
         <table class="table table-borderless mt-3" >
-             <tr>
+            <tr>
                 <th>Username</th>
                 <td><?= $keluhan[0]['username'] ?></td>
             </tr>
