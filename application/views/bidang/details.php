@@ -43,6 +43,10 @@
                     <th>Rating Penanganan</th>
                     <td><?= $keluhan[0]['rating'] ?></td>
                 </tr>
+                <tr>
+                    <th>Ulasan Rating</th>
+                    <td> <?= $keluhan[0]['rating_desc'] == '' ? 'Tidak ada ulasan rating' : $keluhan[0]['rating_desc'] ?></td>
+                </tr>
             <?php }; ?>
             <tr>
                 <th>Username Pelanggan</th>
