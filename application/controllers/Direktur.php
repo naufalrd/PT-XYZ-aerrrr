@@ -19,12 +19,10 @@ class Direktur extends CI_Controller
         $data['Pembelian'] = $this->direktur_model->search_pembelian();
         $data['Distribusi'] = $this->direktur_model->search_distribusi();
 
-        $data['RatingJaminanKualitas'] = $this->direktur_model->jumlahRating(2);
-        $data['RatingPembelian'] = $this->direktur_model->jumlahRating(3);
-        $data['RatingDistribusi'] = $this->direktur_model->jumlahRating(4);
+        $data['jumlahRating'] = $this->direktur_model->jumlahRating();
+        // var_dump($data['jumlahRating']);
         
         $data['keluhan'] = $this->direktur_model->search_keluhan();
-        #$data['keluhan_selesai'] = $this->direktur_model->keluhan_selesai();
         $data['selesai'] = $this->direktur_model->search_selesai();
         $data['diteruskan'] = $this->direktur_model->search_diteruskan();
         $this->load->view('template/header.php');

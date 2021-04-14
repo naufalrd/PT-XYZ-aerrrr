@@ -77,11 +77,10 @@ class Direktur_model extends CI_Model{
         return $this->db->get()->result_array();
     }
 
-    public function jumlahRating($bidang){
-        $this->db->select('SUM(keluhan.rating) as jumlah, bidang.nama_bidang');
+    public function jumlahRating(){
+        $this->db->select('SUM(keluhan.rating) as jumlah');
         $this->db->from('keluhan');
-		$this->db->join('bidang', 'bidang.id_bidang = keluhan.id_bidang');
-        $this->db->where('keluhan.id_bidang',$bidang);
-        return $this->db->get()->row();
+        $this->db->where('status', 'Selesai');
+        return $this->db->get()->result_array()['0'];
     }
 }

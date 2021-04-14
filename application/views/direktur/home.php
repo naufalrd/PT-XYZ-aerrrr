@@ -1,7 +1,9 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url(); ?>/assets/js/rater.js"></script>
 <div class="container mb-container">
     <div>
-        <div class="page-content page-container" id="page-content">
-            <div class="padding">
+        <div class="container" id="page-content">
+            <div class="">
                 <div class="row">
                     <div class="col-sm-8 col-md-6">
                         <div class="card">
@@ -13,23 +15,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-8 col-md-6">
-                        <div class="card">
-                            <div class="card-header">Bidang yang dituju di setiap ulasan</div>
-                            <div class="card-body">
-                                <div>
-                                    <canvas style="width: 400px;height: 400px" id="myChart2"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">Rating Ulasan Pelanggan</div>
-                            <div class="card-body">
-                                <div>
-                                    <canvas style="width: 400px;height: 400px" id="ulasanPelanggan"></canvas>
+                            <div class="card-body row">
+                            <div class="col-5 col-sm-5 col-md-4 col-lg-4">
+                                <h1 class="fs-1 text-bold ms-2"><?= $jumlahRating['jumlah'] / count($selesai) ;?></h1>
+                                <div class="text-center">
+                                    <div class="fs-5 mb-0 rating" data-rate-value="<?= $jumlahRating['jumlah'] / count($selesai) ;?>" style="color: #ffe900"></div>
                                 </div>
+                            </div>
+                            <div class="col-7 col-sm-7 col-md-8 col-lg-8 align-self-center">
+                                <p class="text-center fs-3"><b><?= count($selesai) ;?> Keluhan Selesai</b></p>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -38,8 +36,7 @@
         </div>
     </div>
 
-
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="row mx-4 px-3 py-5 shadow bg-white rounded">
         <h1 class="text-center">Keluhan Diteruskan</h1>
         <div class="container text-center overflow-auto">
 
@@ -71,7 +68,7 @@
         </div>
     </div>
 
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
+    <div class="row mt-5 mx-4 px-3 py-5 shadow bg-white rounded">
         <h1 class="text-center">Keluhan Selesai</h1>
         <div class="container text-center overflow-auto">
 
@@ -117,15 +114,16 @@
 <script>
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: ['Selesai', 'Belum Selesai'],
+            responsive: true,
             datasets: [{
                 label: '# of Votes',
                 data: [<?= count($selesai) ?>, <?= count($diteruskan) ?>],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -134,73 +132,30 @@
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
+        // options: {
+        //     scales: {
+        //         y: {
+        //             beginAtZero: true,
+        //             ticks: {
+        //                 // forces step size to be 1 units
+        //                 stepSize: 1
+        //             }
+        //         }
+        //     }
+        // }
     });
 
-    var ctx2 = document.getElementById('myChart2');
-    var myChart2 = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?= count($JaminanKualitas).','. count($Pembelian).','. count($Distribusi) ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    // Options
+    var options = {
+        max_value: 5,
+        step_size: 0.1,
+        initial_value: 0,
+        selected_symbol_type: 'utf8_star', // Must be a key from symbols
+        emptyStarImage: "./upload/image/starbackground.png",
+        cursor: 'pointer',
+        readonly: true,
+        change_once: false, // Determines if the rating can only be set once
+    }
 
-    // Rating ulasan pelanggan
-    var ulasanPelanggan = document.getElementById('ulasanPelanggan');
-    var myChart3 = new Chart(ulasanPelanggan, {
-        type: 'bar',
-        data: {
-            labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
-            datasets: [{
-                label: 'haiii',
-                data: [<?= $RatingJaminanKualitas->jumlah/count($JaminanKualitas).','.$RatingPembelian->jumlah/(count($Pembelian)!=0 ? count($Pembelian) : '1').','.$RatingDistribusi->jumlah/(count($Distribusi)!=0 ? count($Distribusi) : '1') ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    $(".rating").rate(options);
 </script>
