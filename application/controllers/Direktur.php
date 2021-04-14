@@ -27,6 +27,7 @@ class Direktur extends CI_Controller
         #$data['keluhan_selesai'] = $this->direktur_model->keluhan_selesai();
         $data['selesai'] = $this->direktur_model->search_selesai();
         $data['diteruskan'] = $this->direktur_model->search_diteruskan();
+        $data['bidang'] = $this->direktur_model->search_bidang();
         $this->load->view('template/header.php');
         $this->load->view('direktur/home.php', $data);
         $this->load->view('template/footer.php');

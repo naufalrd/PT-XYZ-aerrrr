@@ -1,4 +1,7 @@
 <div class="container mb-container">
+<?php foreach ($bidang as $bidang) :?>
+     <?= '"'. $bidang['nama_bidang']. '",' ?>
+<?php endforeach ?>
     <div>
         <div class="page-content page-container" id="page-content">
             <div class="padding">
@@ -115,6 +118,14 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Contoh Script buat manggil -->
 <script>
+    // menyiapkan data nama bidang
+    var bidang = <?= $bidang['nama_bidang'] ?>
+    
+    // <?php foreach ($bidang as $bidang) :?>
+    //  <?= $bidang['nama_bidang']. ',' ?>;
+    //                 <?php endforeach ?>
+                    
+
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -172,13 +183,12 @@
             }
         }
     });
-
     // Rating ulasan pelanggan
     var ulasanPelanggan = document.getElementById('ulasanPelanggan');
     var myChart3 = new Chart(ulasanPelanggan, {
         type: 'bar',
         data: {
-            labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
+            labels: bidang,
             datasets: [{
                 label: 'haiii',
                 data: [<?= $RatingJaminanKualitas->jumlah/count($JaminanKualitas).','.$RatingPembelian->jumlah/(count($Pembelian)!=0 ? count($Pembelian) : '1').','.$RatingDistribusi->jumlah/(count($Distribusi)!=0 ? count($Distribusi) : '1') ?>],

@@ -84,4 +84,11 @@ class Direktur_model extends CI_Model{
         $this->db->where('keluhan.id_bidang',$bidang);
         return $this->db->get()->row();
     }
+
+    public function search_bidang(){
+        $this->db->select('nama_bidang');
+        $this->db->from('bidang');
+        $this->db->where('id_bidang >','1');
+        return $this->db->get()->result_array();
+    }
 }
