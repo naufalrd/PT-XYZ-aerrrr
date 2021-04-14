@@ -182,4 +182,17 @@ class Operator_model extends CI_Model
     {
         $this->db->where('id_bidang', $id_bidang)->update('bidang', $data);
     }
+
+    public function update_data($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+
+    public function update_pasword($id_user,$password)
+    {
+        $data = array(
+            'password' => $password
+        );
+        $this->db->where('id_user',$id_user)->update('user', $data);
+    }
 }

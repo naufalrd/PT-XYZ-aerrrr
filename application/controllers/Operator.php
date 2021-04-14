@@ -200,4 +200,23 @@ class Operator extends CI_Controller
         }
         redirect('operator/user');
     }
+
+    public function update_password()
+    {
+        $id_user = $this->input->post('id_user');
+        $new_password = $this->input->post('new_password');
+        $re_password = $this->input->post('re_password');
+        
+        if ($new_password == $re_password) {
+            $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+            $this->operator_model->update_pasword($id_user,$new_password);
+            redirect('operator/user');
+        } else {
+            $data = [
+                'type' => 'error',
+                'msg' => 'maaf password yang anda masukkan salah.'
+            ];
+            echo json_encode($data);
+        }
+    }
 }
