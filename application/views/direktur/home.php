@@ -122,7 +122,7 @@
             labels: ['Selesai', 'Belum Selesai'],
             datasets: [{
                 label: '# of Votes',
-                data: [<?= count($selesai) ?>, <?= count($diteruskan) ?>],
+                data: [1,2],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -147,18 +147,22 @@
     var myChart2 = new Chart(ctx2, {
         type: 'bar',
         data: {
-            labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
+            labels: [<?php foreach ($bidang as $a) : ?>
+                        <?=   "'".$a['nama_bidang']."',"?>
+                    <?php endforeach ?>],
             datasets: [{
                 label: '# of Votes',
-                data: [<?= count($JaminanKualitas).','. count($Pembelian).','. count($Distribusi) ?>],
+                data: [1,2,3,4],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
                     'rgba(255, 206, 86, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
                     'rgba(255, 206, 86, 1)'
                 ],
                 borderWidth: 1
@@ -178,10 +182,12 @@
     var myChart3 = new Chart(ulasanPelanggan, {
         type: 'bar',
         data: {
-            labels: ['Jaminan Kualitas', 'Pembelian', 'Distribusi'],
+            labels: [<?php foreach ($bidang as $a) : ?>
+                        <?=   "'".$a['nama_bidang']."',"?>
+                    <?php endforeach ?>],
             datasets: [{
                 label: 'haiii',
-                data: [<?= $RatingJaminanKualitas->jumlah/count($JaminanKualitas).','.$RatingPembelian->jumlah/(count($Pembelian)!=0 ? count($Pembelian) : '1').','.$RatingDistribusi->jumlah/(count($Distribusi)!=0 ? count($Distribusi) : '1') ?>],
+                data: [1,2,3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
