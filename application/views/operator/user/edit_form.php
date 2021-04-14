@@ -1,6 +1,9 @@
 <div class="container mb-container">
-    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
-        <h1 class="text-center mb-5">Edit User</h1>
+    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded editBiodata">
+        <h1 class="text-center">Edit User</h1>
+        <div class="col text-center mb-5">
+            <a id="editPassword" class="btn btn-outline-dark btn-sm">Edit Password</a>
+        </div>
         <div class="container text-start overflow-auto">
         <?php foreach ($user as $data) : ?>
             <form action="<?= site_url(); ?>operator/edit_user/<?= $data['id_user'] ?>" method="post">
@@ -47,7 +50,45 @@
                 </div>
                 <button class="btn btn-lg btn-primary" type="submit">Edit User</button>
             </form>
-            <?php endforeach ?>
+        </div>
+    </div>
+    <div class="row mt-5 mx-5 p-5 shadow bg-white rounded editPassword d-none">
+        <h1 class="text-center">Edit Password</h1>
+        <div class="col text-center mb-5">
+            <a onclick="editBiodata()" class="btn btn-outline-dark btn-sm">Edit Biodata</a>
+        </div>
+        <div class="container text-start overflow-auto">
+            <form action="<?= site_url(); ?>operator/update_password" method="post">
+                <div class="row">
+                    <input type="hidden" name="id_user" value="<?= $data['id_user']; ?>">
+                    <div class="form-group col-12 mb-3">
+                        <label for="inputEmail" class="form-controll">Password Baru</label>
+                        <input type="password" name="new_password" class="form-control shadow-none" placeholder="Password Baru" required>
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                        <label for="inputEmail" class="form-controll">Ulangi Password Baru</label>
+                        <input type="password" name="re_password" class="form-control shadow-none" placeholder="Ulangi Password Baru" required>
+                    </div>
+                </div>
+                <div class="text-center col">
+                    <button class="btn btn-md btn-primary" type="submit">Update Password</button>
+                </div>
+            </form>
+
+        <?php endforeach ?>
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('editPassword').addEventListener('click', () => {
+        document.querySelector('.editBiodata').className = 'row mt-5 mx-5 p-5 shadow bg-white rounded editBiodata d-none'
+        document.querySelector('.editPassword').className = 'row mt-5 mx-5 p-5 shadow bg-white rounded editPassword'
+    })
+
+    async function editPassword() {
+        document.querySelector('.editBiodata').className = 'row mt-5 mx-5 p-5 shadow bg-white rounded editBiodata'
+        document.querySelector('.editPassword').className = 'row mt-5 mx-5 p-5 shadow bg-white rounded editPassword d-none'
+    }
+
+</script>
