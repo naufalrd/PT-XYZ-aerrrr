@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2021 at 07:06 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- Generation Time: Apr 15, 2021 at 11:29 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -134,20 +135,23 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `no_hp` varchar(14) NOT NULL,
   `alamat` text NOT NULL,
-  `id_level` int(11) NOT NULL
+  `id_level` int(11) NOT NULL,
+  `rate` int(1) DEFAULT NULL,
+  `review` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `no_hp`, `alamat`, `id_level`) VALUES
-(1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', '085544123900', 'Jl Kenari', 1),
-(2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', '085544123901', 'Sleman', 2),
-(3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', '085544123902', 'lalalalala', 3),
-(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', '085544123903', 'bidang', 4),
-(10, 'distribusi@gmail.com', 'bang', 'distribusi', 'distribusi', '$2y$10$tbCGXCktWaZNLhiwOnmDnOUNttobxD2tsT/OjlL4P0rOrFi5XlhJC', '008', 'distribusi', 6),
-(11, 'desain@gmail.com', 'desain', 'desain', 'desain', '$2y$10$BTJMg068Rc7VbH255PBOWOM6KA4jkmTLpfvgdLc2uDVdcFym4mxfa', '099', 'desain', 7);
+INSERT INTO `user` (`id_user`, `email_user`, `nama_depan`, `nama_belakang`, `username`, `password`, `no_hp`, `alamat`, `id_level`, `rate`, `review`) VALUES
+(1, 'pelanggan@gmail.com', 'Pelanggan', 'Ganteng', 'pelanggan', '$2y$10$3oUer2/aJCDDivhDDMolgOu2G.1wkVqQsmAMk2lr45nxDjJX64m6a', '085544123900', 'Jl Kenari', 1, 3, 'jele'),
+(2, 'operator@gmail.com', 'Operator', 'Ganteng', 'operator', '$2y$10$IdtLRUf/1tBtAC/OwbzkKuPvw6aiAxtSWGjT3mKG.SDEU.TypcQMK', '085544123901', 'Sleman', 2, 0, ''),
+(3, 'direktur@gmail.com', 'Direktur', 'Cantik', 'direktur', '$2y$10$r.69/AILh0MgH3t9gCKb2OTGsxajorJi02oUqJ1qS1Ld1c0BPHOJe', '085544123902', 'lalalalala', 3, 0, ''),
+(5, 'jaminankualitas@gmail.com', 'Jaminan', 'Kualitas', 'bidang', '$2y$10$weKKadN3D/uwvqxCvQBd2OWI39VlaaqYjVZpG2B6JlLu3XzQv0EAm', '085544123903', 'bidang', 4, 0, ''),
+(10, 'distribusi@gmail.com', 'bang', 'distribusi', 'distribusi', '$2y$10$tbCGXCktWaZNLhiwOnmDnOUNttobxD2tsT/OjlL4P0rOrFi5XlhJC', '008', 'distribusi', 6, 0, ''),
+(11, 'desain@gmail.com', 'desain', 'desain', 'desain', '$2y$10$BTJMg068Rc7VbH255PBOWOM6KA4jkmTLpfvgdLc2uDVdcFym4mxfa', '099', 'desain', 7, 0, ''),
+(12, 'pelangganlagi@gmail.com', 'pelanggan', 'lagi', 'pelangganlagi', '$2y$10$3QDdaR7FuJjvKRo0sscXG.VnEtwnZu0R3VGPKwhorJFH2ebZbMk1O', '08111111180', 'jogja', 1, 5, 'bgus bged');
 
 --
 -- Indexes for dumped tables
@@ -220,7 +224,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
