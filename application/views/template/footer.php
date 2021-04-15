@@ -52,6 +52,26 @@
         </div>
     </div>
 </div>
+
+<!-- Kasih Bintang -->
+<script>
+    // Options
+    var options = {
+        max_value: 5,
+        step_size: 1,
+        initial_value: 0,
+        selected_symbol_type: 'utf8_star', // Must be a key from symbols
+        cursor: 'pointer',
+        readonly: false,
+        change_once: false, // Determines if the rating can only be set once
+    }
+
+    $(".rating").rate(options);
+    $(".rating").on("change", function(ev, data) {
+        document.querySelector('.ratingValue').value = data.to
+    });
+</script>
+
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

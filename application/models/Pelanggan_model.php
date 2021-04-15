@@ -48,4 +48,13 @@ class Pelanggan_model extends CI_Model{
         $this->db->where('keluhan.id_keluhan', $id);
         return $this->db->get()->result_array();
     }
+
+    public function update_rating($rating,$review,$user){
+        
+        $data = array(
+            'rate' => $rating,
+            'review' => $review
+        );
+        $this->db->where('id_user', $user)->update('user', $data);
+    }
 }

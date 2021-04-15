@@ -167,4 +167,13 @@ class Pelanggan extends CI_Controller
             echo json_encode($data);
         }
     }
+
+    public function rating(){
+        $rating = $this->input->post('rate');
+        $review = $this->input->post('review');
+        $user = $this->session->userdata('id_user');
+        
+        $this->pelanggan_model->update_rating($rating, $review, $user);
+        redirect('pelanggan');
+    }
 }
