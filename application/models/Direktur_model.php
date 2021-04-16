@@ -92,6 +92,7 @@ class Direktur_model extends CI_Model
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('id_level', '1');
+        $this->db->where('rate !=', NULL);
         return $this->db->get()->result_array();
     }
 
@@ -108,6 +109,7 @@ class Direktur_model extends CI_Model
         $this->db->select('SUM(rate) as jumlah');
         $this->db->from('user');
         $this->db->where('id_level', '1');
+        $this->db->where('rate !=', NULL);
         return $this->db->get()->result_array()['0'];
     }
 }

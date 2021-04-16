@@ -70,12 +70,17 @@ class Pelanggan extends CI_Controller
 
     public function tambah_respon($id, $idkeluhan)
     {
+        $this->load->helper('date');
+        date_default_timezone_set('Asia/Jakarta');
+        $now = date('Y-m-d');
+
         // ini buat tabel feedback
         $where = [
             'id_feedback' => $id
         ];
         $data = [
-            'feedback' => $this->input->post('respon_pelanggan')
+            'feedback' => $this->input->post('respon_pelanggan'),
+            'tanggal_feedback' => $now
         ];
         $table = 'feedback';
         // ini buat tabel keluhan
@@ -93,6 +98,11 @@ class Pelanggan extends CI_Controller
 
     public function selesai($keluhan, $feedback)
     {
+        // mabil tgl hr ini
+        $this->load->helper('date');
+        date_default_timezone_set('Asia/Jakarta');
+        $now = date('Y-m-d');
+
         //ini buat tabel keluhan
         $where = [
             'id_keluhan' => $keluhan
@@ -109,7 +119,8 @@ class Pelanggan extends CI_Controller
             'id_feedback' => $feedback
         ];
         $data2 = [
-            'feedback' => "Baik, terimakasih !"
+            'feedback' => "Baik, terimakasih !",
+            'tanggal_feedback' => $now
         ];
         $table2 = 'feedback';
         $this->pelanggan_model->update_data($where, $data, $table);
@@ -173,7 +184,9 @@ class Pelanggan extends CI_Controller
         $review = $this->input->post('review');
         $user = $this->session->userdata('id_user');
         
-        $this->pelanggan_model->update_rating($rating, $review, $user);
-        redirect('pelanggan');
+        $give_rate = $this->pelanggan_model->update_rating($rating, $review, $user);
+        if($give_rate){
+            echo '<script>alert("Ulasan anda berhasil kami terima, Terimakasih atas masukan anda.");window.location.href="' . base_url('pelanggan/') . '";</script>';
+        }
     }
 }
