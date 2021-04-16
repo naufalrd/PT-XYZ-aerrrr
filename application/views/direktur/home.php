@@ -30,6 +30,20 @@
                             </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header">Rating Ulasan Sistem</div>
+                            <div class="card-body row">
+                            <div class="col-5 col-sm-5 col-md-4 col-lg-4">
+                                <h1 class="fs-1 text-bold ms-2"><?= $ratingSistem['jumlah'] / count($pelanggan) ;?></h1>
+                                <div class="text-center">
+                                    <div class="fs-5 mb-0 ratings" data-rate-value="<?= $ratingSistem['jumlah'] / count($pelanggan) ;?>" style="color: #ffe900"></div>
+                                </div>
+                            </div>
+                            <div class="col-7 col-sm-7 col-md-8 col-lg-8 align-self-center">
+                                <p class="text-center fs-3"><b><?= count($pelanggan) ;?> Pelanggan Aktif</b></p>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,4 +172,5 @@
     }
 
     $(".rating").rate(options);
+    $(".ratings").rate(options);
 </script>
