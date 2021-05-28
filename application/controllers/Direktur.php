@@ -36,7 +36,6 @@ class Direktur extends CI_Controller
     {
         $data['feedback'] = $this->direktur_model->monitor_feedback($id);
         $data['keluhan'] = $this->direktur_model->monitor_keluhan($id);
-        var_dump($data);
         $this->load->view('template/header.php');
         $this->load->view('direktur/details.php', $data);
         $this->load->view('template/footer.php');
