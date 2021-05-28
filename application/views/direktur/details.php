@@ -51,23 +51,23 @@
             <?php }; ?>
             <tr>
                 <th>Username Pelanggan</th>
-                <td><?= $keluhan[0]['username'] ?></td>
+                <td><?= $feedback[0]['username'] ?></td>
             </tr>
             <tr>
                 <th>Nama Lengkap Pelanggan</th>
-                <td><?= $keluhan[0]['nama_depan'] ?> <?= $keluhan[0]['nama_belakang'] ?></td>
+                <td><?= $feedback[0]['nama_depan'] ?> <?= $feedback[0]['nama_belakang'] ?></td>
             </tr>
             <tr>
                 <th>Email Pelanggan</th>
-                <td><?= $keluhan[0]['email_user'] ?></td>
+                <td><?= $feedback[0]['email_user'] ?></td>
             </tr>
             <tr>
                 <th>No Hp Pelanggan</th>
-                <td><?= $keluhan[0]['no_hp'] ?></td>
+                <td><?= $feedback[0]['no_hp'] ?></td>
             </tr>
             <tr>
                 <th>Alamat Pelanggan</th>
-                <td><?= $keluhan[0]['alamat'] ?></td>
+                <td><?= $feedback[0]['alamat'] ?></td>
             </tr>
         </table>
         </div>
