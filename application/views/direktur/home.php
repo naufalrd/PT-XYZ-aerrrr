@@ -20,13 +20,27 @@
                             <div class="card-header">Rating Ulasan Pelanggan</div>
                             <div class="card-body row">
                             <div class="col-5 col-sm-5 col-md-4 col-lg-4">
-                                <h1 class="fs-1 text-bold ms-2"><?= $jumlahRating['jumlah'] / count($selesai) ;?></h1>
+                                <h1 class="fs-1 text-bold ms-2"><?= round(($jumlahRating['jumlah'] / count($selesai)),2);?></h1>
                                 <div class="text-center">
-                                    <div class="fs-5 mb-0 rating" data-rate-value="<?= $jumlahRating['jumlah'] / count($selesai) ;?>" style="color: #ffe900"></div>
+                                    <div class="fs-5 mb-0 rating" data-rate-value="<?= round(($jumlahRating['jumlah'] / count($selesai)),2);?>" style="color: #ffe900"></div>
                                 </div>
                             </div>
                             <div class="col-7 col-sm-7 col-md-8 col-lg-8 align-self-center">
                                 <p class="text-center fs-3"><b><?= count($selesai) ;?> Keluhan Selesai</b></p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">Rating Ulasan Sistem</div>
+                            <div class="card-body row">
+                            <div class="col-5 col-sm-5 col-md-4 col-lg-4">
+                                <h1 class="fs-1 text-bold ms-2"><?= round(($ratingSistem['jumlah'] / count($pelanggan)),2) ;?></h1>
+                                <div class="text-center">
+                                    <div class="fs-5 mb-0 ratings" data-rate-value="<?= round(($ratingSistem['jumlah'] / count($pelanggan)),2) ;?>" style="color: #ffe900"></div>
+                                </div>
+                            </div>
+                            <div class="col-7 col-sm-7 col-md-8 col-lg-8 align-self-center">
+                                <p class="text-center fs-3"><b><?= count($pelanggan) ;?> Pelanggan Aktif</b></p>
                             </div>
                             </div>
                         </div>
@@ -158,4 +172,5 @@
     }
 
     $(".rating").rate(options);
+    $(".ratings").rate(options);
 </script>

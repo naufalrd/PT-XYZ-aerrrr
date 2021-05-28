@@ -55,6 +55,6 @@ class Pelanggan_model extends CI_Model{
             'rate' => $rating,
             'review' => $review
         );
-        $this->db->where('id_user', $user)->update('user', $data);
+        return $this->db->where('id_user', $user)->update('user', $data);
     }
 }

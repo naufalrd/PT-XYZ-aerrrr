@@ -9,8 +9,9 @@
 <div class="container mb-container">
 
     <div class="row mt-5 mx-5 p-5 shadow bg-white rounded">
-        <h1 class="fs-3 text-start"><?= $keluhan[0]['judul'] ?></h1>
-        <p class="fs-3 text-start"><?= $keluhan[0]['keluhan'] ?></p>
+        <h1 class="fs-1 text-start"><?= $keluhan[0]['judul'] ?></h1>
+        <p class="fs-2 text-start"><?= $keluhan[0]['keluhan'] ?></p>
+        <p class="text-start"><?= $this->session->userdata('username'); ?> - <?= date_indo($keluhan[0]['tanggal_keluhan']) ?></p>
         <?php foreach ($feedback as $data) : ?>
             <div class="d-flex justify-content-end">
                 <div class="w-75 border border-info rounded-3 shadow-sm p-3 mb-3">
@@ -21,7 +22,7 @@
             <div class="d-flex justify-content-start <?= $data['feedback'] == '' ? 'd-none' : '' ?>">
                 <div class="w-75 border border-success rounded-3 shadow-sm p-3 mb-3">
                     <p class="text-secondary"><?= $data['feedback'] ?></p>
-                    <p class="mb-0"><?= $data['username'] ?> - <?= date_indo($data['tanggal_keluhan']) ?></p>
+                    <p class="mb-0"><?= $data['username'] ?> - <?= date_indo($data['tanggal_feedback']) ?></p>
                 </div>
             </div>
         <?php endforeach ?>
@@ -40,7 +41,7 @@
                     <p class="fs-6">Berikan rating kepada kami :)</p>
                     <div class="rating fs-1" data-rate-value=0 style="color: #ffe900"></div>
                     <form action="<?= site_url() ?>pelanggan/selesai/<?= $data['id_keluhan'] ?>/<?= $getLastFeedback ?>" method="POST">
-                        <input type="hidden" name="rating" class="ratingValue">
+                        <input type="hidden" name="rating" id="ratingValue">
                         <label for="" class="mt-3">Berikan juga ulasan atas kinerja kami :)</label>
                         <div class="row">
                             <textarea name="rating_desc" class="form-control mx-2" placeholder="contoh : respon baik, ramah, dll" required></textarea>
@@ -86,7 +87,7 @@
 
         $(".rating").rate(options);
         $(".rating").on("change", function(ev, data) {
-            document.querySelector('.ratingValue').value = data.to
+            document.querySelector('#ratingValue').value = data.to
         });
     </script>
 </div>
