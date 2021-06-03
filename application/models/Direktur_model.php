@@ -50,6 +50,7 @@ class Direktur_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('keluhan');
+        $this->db->join('user', 'user.id_user = keluhan.id_user');
         $this->db->where('keluhan.id_keluhan', $id);
         return $this->db->get()->result_array();
     }
