@@ -21,12 +21,14 @@ class Direktur extends CI_Controller
 
         $data['jumlahRating'] = $this->direktur_model->jumlahRating();
         $data['ratingSistem'] = $this->direktur_model->ratingSistem();
+        $data['reviewSistem'] = $this->direktur_model->reviewSistem();
         // var_dump($data['jumlahRating']);
         
         $data['keluhan'] = $this->direktur_model->search_keluhan();
         $data['selesai'] = $this->direktur_model->search_selesai();
         $data['pelanggan'] = $this->direktur_model->search_pelanggan();
         $data['diteruskan'] = $this->direktur_model->search_diteruskan();
+        
         $this->load->view('template/header.php');
         $this->load->view('direktur/home.php', $data);
         $this->load->view('template/footer.php');

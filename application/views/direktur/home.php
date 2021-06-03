@@ -113,6 +113,35 @@
             </table>
         </div>
     </div>
+
+    <div class="row mx-4 px-3 py-5 shadow bg-white rounded">
+        <h1 class="text-center">Review Sistem</h1>
+        <div class="container text-center overflow-auto">
+
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pelanggan</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no = 1;
+                    foreach ($reviewSistem as $data) : ?>
+                        <tr class="text-center">
+                            <th><?= $no++ ?></th>
+                            <td><?= $data['nama_depan'] . " " . $data['nama_belakang'] ?></td>
+                            <td><?= $data['rate'] ?></td>
+                            <td><?= $data['review'] ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 

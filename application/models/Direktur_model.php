@@ -109,7 +109,14 @@ class Direktur_model extends CI_Model
         $this->db->select('SUM(rate) as jumlah');
         $this->db->from('user');
         $this->db->where('id_level', '1');
-        $this->db->where('rate !=', NULL);
+        $this->db->where('rate !=', '0');
         return $this->db->get()->result_array()['0'];
+    }
+
+    public function reviewSistem(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('rate !=', '0');
+        return $this->db->get()->result_array();
     }
 }
