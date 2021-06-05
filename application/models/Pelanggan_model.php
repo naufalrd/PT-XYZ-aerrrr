@@ -6,9 +6,13 @@ class Pelanggan_model extends CI_Model{
         return $this->db->get_where('user',$where);
     }
     
+    // public function update_data($where,$data,$table){
+    //     $this->db->where($where);
+    //     $this->db->update($table,$data);
+    // }
+    
     public function update_data($where,$data,$table){
-        $this->db->where($where);
-        $this->db->update($table,$data);
+       return $this->db->where($where)->update($table,$data);
     }
 
     public function tambah_keluhan($table,$data){
@@ -19,6 +23,14 @@ class Pelanggan_model extends CI_Model{
         $this->db->from('keluhan');
         $id_user = $this->session->userdata('id_user');
         $where = "id_user='$id_user' AND (status = '' OR status = 'Ditinjau' OR status ='Diteruskan')";
+        $this->db->where($where);
+        return $this->db->get()->result_array();
+    }
+
+    public function get_declined(){
+        $this->db->from('keluhan');
+        $id_user = $this->session->userdata('id_user');
+        $where = "id_user='$id_user' AND status = 'Ditolak'";
         $this->db->where($where);
         return $this->db->get()->result_array();
     }

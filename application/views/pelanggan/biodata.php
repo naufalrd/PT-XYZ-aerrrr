@@ -47,15 +47,15 @@
                     <input type="hidden" name="password" value="<?= $a->password; ?>">
                     <div class="form-group col-12 mb-3">
                         <label for="inputEmail" class="form-controll">Password Lama</label>
-                        <input type="password" name="old_password" class="form-control shadow-none" placeholder="Nama Depan" required autofocus>
+                        <input type="password" name="old_password" class="form-control shadow-none" placeholder="Masukan Password Lama" required autofocus>
                     </div>
                     <div class="form-group col-12 mb-3">
                         <label for="inputEmail" class="form-controll">Password Baru</label>
-                        <input type="password" name="new_password" class="form-control shadow-none" placeholder="Nama Belakang" required>
+                        <input type="password" name="new_password" class="form-control shadow-none" placeholder="Masukan Password Baru" required>
                     </div>
                     <div class="form-group col-12 mb-3">
                         <label for="inputEmail" class="form-controll">Retype Password Baru</label>
-                        <input type="password" name="re_password" class="form-control shadow-none" placeholder="No. HP" required>
+                        <input type="password" name="re_password" class="form-control shadow-none" placeholder="Tulis Kembali Password Baru" required>
                     </div>
                 </div>
                 <div class="text-center col">

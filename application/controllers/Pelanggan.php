@@ -15,8 +15,9 @@ class Pelanggan extends CI_Controller
 
     public function index()
     {
-        $data['keluhan'] = $this->pelanggan_model->get_keluhan();
-        $data['riwayat'] = $this->pelanggan_model->get_riwayat();
+        $data['declined'] = $this->pelanggan_model->get_declined();
+        $data['keluhan']  = $this->pelanggan_model->get_keluhan();
+        $data['riwayat']  = $this->pelanggan_model->get_riwayat();
         $this->load->view('template/header.php');
         $this->load->view('pelanggan/home.php', $data);
         $this->load->view('template/footer.php');
@@ -147,8 +148,12 @@ class Pelanggan extends CI_Controller
             'username' => $this->input->post('username')
         ];
         $table = 'user';
-        $this->pelanggan_model->update_data($where, $data, $table);
-        redirect('pelanggan');
+        $update = $this->pelanggan_model->update_data($where, $data, $table);
+        if($update){
+            echo '<script>alert("Update Biodata Berhasil");window.location.href="' . base_url('pelanggan/') . '";</script>';
+        }else{
+            echo '<script>alert("Update Biodata GAGAL");window.location.href="' . base_url('pelanggan/') . '";</script>';
+        }
     }
 
     public function update_password()
@@ -168,14 +173,19 @@ class Pelanggan extends CI_Controller
                 'id_user' => $id_user
             ];
             $table = 'user';
-            $this->pelanggan_model->update_data($where, $data, $table);
-            redirect('pelanggan');
+            $update = $this->pelanggan_model->update_data($where, $data, $table);
+            if($update){
+                echo '<script>alert("Update Password Berhasil");window.location.href="' . base_url('pelanggan/') . '";</script>';
+            }else{
+                echo '<script>alert("Update Password GAGAL");window.location.href="' . base_url('pelanggan/') . '";</script>';
+            }
         } else {
-            $data = [
-                'type' => 'error',
-                'msg' => 'maaf password yang anda masukkan salah.'
-            ];
-            echo json_encode($data);
+            // $data = [
+            //     'type' => 'error',
+            //     'msg' => 'maaf password yang anda masukkan salah.'
+            // ];
+            // echo json_encode($data);
+            echo '<script>alert("Maaf password lama yang anda masukkan salah.");window.location.href="' . base_url('pelanggan/') . '";</script>';
         }
     }
 
@@ -187,6 +197,8 @@ class Pelanggan extends CI_Controller
         $give_rate = $this->pelanggan_model->update_rating($rating, $review, $user);
         if($give_rate){
             echo '<script>alert("Ulasan anda berhasil kami terima, Terimakasih atas masukan anda.");window.location.href="' . base_url('pelanggan/') . '";</script>';
+        }else{
+            echo '<script>alert("Maaf Sistem Sedang ada sedikit kendala sementara tidak bisa menerima ulasan.");window.location.href="' . base_url('pelanggan/') . '";</script>';
         }
     }
 }

@@ -88,4 +88,34 @@
             </table>
         </div>
     </div>
+
+    <div class="<?= !isset($declined[0]['id_keluhan']) ? 'd-none' : ''; ?> row mt-5 mx-5 p-5 shadow bg-white rounded">
+        <h1 class="text-center mb-5">Keluhan Ditolak</h1>
+        <div class="container text-center overflow-auto">
+
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Keluhan</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no = 1;
+                    foreach ($declined as $c) : ?>
+                        <tr class="text-center">
+                            <th><?= $no++ ?></th>
+                            <td><?= $c['judul'] ?></td>
+                            <td><?= date_indo($c['tanggal_keluhan']) ?></td>
+                            <td><?= $b['status'] ?></td>
+                            <td><a href="<?= site_url(); ?>pelanggan/details/<?= $c['id_keluhan'] ?>" class="btn btn-sm btn-primary"><i class="bx bx-detail"></i> Details</a></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
